@@ -1,0 +1,89 @@
+* {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+
+body{
+    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+    
+}
+
+header {
+  background-image: url(./images/bg-desktop-light.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+  
+.brand {
+  padding: 25px;
+  position: absolute;
+  width: 541px;
+  height: 48px;
+  left: 215px;
+  top: 30px;
+}
+  
+h1 {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 40px;
+/* identical to box height */
+  letter-spacing: 15px;
+  color: #FFFFFF;
+    
+}
+  
+img {
+  margin-left: 680px;
+  position: absolute;
+  top: 57px;
+  bottom: 0px;
+  display: flex;
+  
+}
+
+.quary {
+  background-color: #faf9f9;
+  position: absolute;
+  width: 530px;
+  height: 64px;
+  left: 420px;
+  top: 158px;
+  border-radius: 5px;
+}
+
+.center-input {
+  text-align: left;
+  width: 390px;
+  height: 62px;
+  padding-right: 70px;
+  margin-left: 59px;
+  border: none;
+  outline: none;
+}
+
+.circle-1 {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  margin: -45px 0px 0px 20px;
+  background: #FFFFFF;
+  
+}
+
+
+
+
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
