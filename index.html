@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="index.js">
+  
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,9 +23,9 @@
   <!-- Add dynamic number -->
 
     <header>
-      <div class="brand">
+      <div class="brand-icon">
         <h1>TODO</h1>
-        <img src="./images/icon-moon.svg" alt="moon">
+        <span><img src="./images/icon-moon.svg" alt="moon"></span>
       </div>
 
       <div class="quary">
@@ -34,10 +35,58 @@
           102.12 0 0 0 128 26Zm0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90Z"/></svg>
       </div>
           
-      
-      
     </header>
 
+    <div class="todos-container">
+      <ul class="list">
+        <li>Go for a jog</li>
+        <svg class="circle-2" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><path 
+          fill="currentColor" d="M128 26a102 102 0 1 0 102 102A102.12 
+          102.12 0 0 0 128 26Zm0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90Z"/></svg>
+        
+        <li>Code Django project</li>
+        <svg class="circle-3" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><path 
+          fill="currentColor" d="M128 26a102 102 0 1 0 102 102A102.12 
+          102.12 0 0 0 128 26Zm0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90Z"/></svg>
+        
+        <li>Pray for an hour</li>
+        <svg class="circle-4" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><path 
+          fill="currentColor" d="M128 26a102 102 0 1 0 102 102A102.12 
+          102.12 0 0 0 128 26Zm0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90Z"/></svg>
+
+        <li>Watch anime for 3 hours</li>
+        <svg class="circle-5" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><path 
+          fill="currentColor" d="M128 26a102 102 0 1 0 102 102A102.12 
+          102.12 0 0 0 128 26Zm0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90Z"/></svg>
+
+        <li>Get something to eat</li>
+        <svg class="circle-6" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><path 
+          fill="currentColor" d="M128 26a102 102 0 1 0 102 102A102.12 
+          102.12 0 0 0 128 26Zm0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90Z"/></svg>
+      </ul>
+    </div>
+    
+      
+    <div class="record">
+      <div class="items-left">
+        <label>5 items left</label>
+      </div>
+      <div class="clear">
+        <label>Clear Completed</label>
+      </div>
+      <label>All</label>
+      <label>Active</label>
+      <label>Completed</label>
+    </div>
+
+      
+
+    <div class="drag-drop">
+      <p> Drag and drop to reorder list</p>
+    </div>
+
+    
+    
 
 
 
@@ -46,13 +95,9 @@
 
 
 
-  All
-  Active 
-  Completed
 
-  Clear Completed
 
-  Drag and drop to reorder list
+
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

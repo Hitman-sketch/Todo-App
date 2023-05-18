@@ -1,6 +1,6 @@
 * {
-  margin-left: 0px;
-  margin-right: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 
@@ -9,10 +9,10 @@ body{
     font-family: 'Josefin Sans', sans-serif;
     
 }
-
+/*This code contains the header background image*/
 header {
   background-image: url(./images/bg-desktop-light.jpg);
-  background-size: cover;
+  background-size: fill;
   background-position: center;
   height: 300px;
   display: flex;
@@ -21,17 +21,19 @@ header {
   text-align: center;
 }
   
-.brand {
+/*This container contains the positioning of the icon and the and some of the todo text*/
+.brand-icon {
   padding: 25px;
   position: absolute;
   width: 541px;
   height: 48px;
   left: 215px;
-  top: 30px;
+  top: 45px;
+  
 }
   
-h1 {
-  font-family: 'Josefin Sans';
+/*Todo font tweaks*/
+.brand-icon h1 {
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
@@ -39,20 +41,23 @@ h1 {
 /* identical to box height */
   letter-spacing: 15px;
   color: #FFFFFF;
+  margin-right: 10px;
     
 }
   
-img {
+/*moon icon positioning*/
+.brand-icon img {
   margin-left: 680px;
   position: absolute;
-  top: 57px;
+  top: 35px;
   bottom: 0px;
   display: flex;
   
 }
 
+/*This is the container that contains the input and it a long rectangualr box that fills up the input*/
 .quary {
-  background-color: #faf9f9;
+  background-color: #FFFFFF;
   position: absolute;
   width: 530px;
   height: 64px;
@@ -60,7 +65,7 @@ img {
   top: 158px;
   border-radius: 5px;
 }
-
+/*Positioning the input*/
 .center-input {
   text-align: left;
   width: 390px;
@@ -71,19 +76,187 @@ img {
   outline: none;
 }
 
+
+/*checkable circle functioning as a return function*/
 .circle-1 {
   position: absolute;
   height: 24px;
   width: 24px;
   display: flex;
   margin: -45px 0px 0px 20px;
-  background: #FFFFFF;
+  color: #9c9494;
   
+}
+
+.circle-2 {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  margin: -45px 0px 0px 20px;
+  color: #9c9494;
+  
+}
+
+.circle-3 {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  margin: -45px 0px 0px 20px;
+  color: #9c9494;
+  
+}
+
+.circle-4 {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  margin: -45px 0px 0px 20px;
+  color: #9c9494;
+  
+}
+
+.circle-5 {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  margin: -45px 0px 0px 20px;
+  color: #9c9494;
+  
+}
+
+.circle-6 {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  margin: -45px 0px 0px 20px;
+  color: #9c9494;
+  
+}
+
+/*This is a list of all our todos*/
+.todos-container {
+  background-color: #f7efef;
+  width: 530px;
+  height: 363px;
+  position: absolute;
+  left: 420px;
+  top: 250px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(170, 170, 170, 0.2);
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list li {
+  height: 62px;
+  line-height: 67px;
+  border-bottom: 1px solid #ccc;
+  padding-left: 70px;
+  color: #9495A5;
+  font-size: 18px;
+}
+
+/*made adjustment to the first list*/
+.list li:first-child {
+  height: 67px; /* Adjust the height of the first item */
+  line-height: 67px; /* Make sure it matches the height */
+}
+
+.list li:last-child {
+  height: 70px;
+  line-height:70px ;
+  border: none;
+  font-size: 18px;
+  
+}
+/*labels in the last-child*/
+.record {
+  position: absolute;
+  left: 45%;
+  right: 3.26%;
+  top: 88.5%;
+  bottom: 5.64%;
+  font-size: 14px;
+}
+/*################## This is the tewaking of the last child in our list ##############################*/
+/*5 items lefty*/
+.items-left > label {
+  margin-left: -165px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  /* identical to box height */
+  letter-spacing: -0.194444px;
+  color: #9495A5;
+  text-align: right;
+
+}
+
+/*clear completed*/
+.clear > label {
+  margin-left: 210px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  position: absolute;
+  top: 2px;
+  /* identical to box height */
+  letter-spacing: -0.194444px;
+  color: #9495A5;
+  text-align: right; 
+}
+
+
+.record > label {
+  position: relative;
+  margin-right: 10px;
+  top: -13px;
+  line-height: 14px;
+  font-size: 14px;
+  color: #9495A5;
+  padding-right: 5px;
+}
+
+.record > label:nth-child(3) {
+  font-weight: 700;
+  color: #3A7CFD;
+}
+
+
+/*######################################################################*/
+
+.drag-drop {
+  position: absolute;
+  width: 179px;
+  height: 14px;
+  left: 598px;
+  top: 648px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  /* identical to box height */
+  text-align: center;
+  letter-spacing: -0.194444px;
+  color: #9495A5;
+  padding-bottom: 10px;
 }
 
 
 
 
-
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
+.attribution {
+  font-size: 11px; 
+  text-align: center; 
+  padding: 50 50 50 50;
+}
+.attribution a { 
+  color: hsl(228, 45%, 44%); 
+}
