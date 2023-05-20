@@ -1,18 +1,27 @@
 * {
   margin: 0px;
-  padding: 0px;
+  padding: -calc(1px * 0.5);
 }
 
 
 body{
     font-size: 18px;
     font-family: 'Josefin Sans', sans-serif;
-    
 }
+
+img {
+  width: 30px;
+  cursor: pointer;
+}
+
+
+
+
+
 /*This code contains the header background image*/
 header {
-  background-image: url(./images/bg-desktop-light.jpg);
-  background-size: cover;
+  
+  background-size: fill;
   background-position: center;
   height: 300px;
   display: flex;
@@ -57,7 +66,7 @@ header {
 
 /*This is the container that contains the input and it a long rectangualr box that fills up the input*/
 .quary {
-  background-color: #FFFFFF;
+  background-color: hsl(0, 100%, 99%);
   position: absolute;
   width: 530px;
   height: 64px;
@@ -78,63 +87,14 @@ header {
 
 
 /*checkable circle functioning as a return function*/
-.circle-1 {
+.circle {
   position: absolute;
   height: 24px;
   width: 24px;
   display: flex;
-  margin: -45px 0px 0px 20px;
+  margin: -45px 10px 5px 20px;
   color: #9c9494;
   
-}
-
-.circle-2 {
-  position: absolute;
-  height: 24px;
-  width: 24px;
-  display: flex;
-  margin: -45px 0px 0px 20px;
-  color: #9c9494;
-  
-}
-
-.circle-3 {
-  position: absolute;
-  height: 24px;
-  width: 24px;
-  display: flex;
-  margin: -45px 0px 0px 20px;
-  color: #9c9494;
-  
-}
-
-.circle-4 {
-  position: absolute;
-  height: 24px;
-  width: 24px;
-  display: flex;
-  margin: -45px 0px 0px 20px;
-  color: #9c9494;
-  
-}
-
-.circle-5 {
-  position: absolute;
-  height: 24px;
-  width: 24px;
-  display: flex;
-  margin: -45px 0px 0px 20px;
-  color: #9c9494;
-  
-}
-
-.circle-6 {
-  position: absolute;
-  height: 24px;
-  width: 24px;
-  display: flex;
-  margin: -45px 0px 0px 20px;
-  color: #9c9494;
   
 }
 
@@ -167,7 +127,7 @@ header {
 /*made adjustment to the first list*/
 .list li:first-child {
   height: 67px; /* Adjust the height of the first item */
-  line-height: 67px; /* Make sure it matches the height */
+  line-height: 78px; /* Make sure it matches the height */
 }
 
 .list li:last-child {
@@ -189,10 +149,10 @@ header {
 /*################## This is the tewaking of the last child in our list ##############################*/
 /*5 items lefty*/
 .items-left > label {
-  margin-left: -165px;
+  margin-left: -160px;
   font-weight: 400;
   font-size: 14px;
-  line-height: 14px;
+  
   /* identical to box height */
   letter-spacing: -0.194444px;
   color: #9495A5;
@@ -201,29 +161,19 @@ header {
 }
 
 /*clear completed*/
-.clear > label {
-  margin-left: 210px;
+.clear {
+  margin-left: -160px;
   font-weight: 400;
   font-size: 14px;
-  line-height: 14px;
-  position: absolute;
-  top: 2px;
+ ;
   /* identical to box height */
   letter-spacing: -0.194444px;
   color: #9495A5;
-  text-align: right; 
+  text-align: right;
+
 }
 
 
-.record > label {
-  position: relative;
-  margin-right: 10px;
-  top: -13px;
-  line-height: 14px;
-  font-size: 14px;
-  color: #9495A5;
-  padding-right: 5px;
-}
 
 .record > label:nth-child(3) {
   font-weight: 700;
@@ -246,17 +196,86 @@ header {
   text-align: center;
   letter-spacing: -0.194444px;
   color: #9495A5;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
-
-
-
 
 .attribution {
   font-size: 11px; 
   text-align: center; 
-  padding: 50 50 50 50;
 }
+
 .attribution a { 
   color: hsl(228, 45%, 44%); 
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  top: 400px;
+}
+
+/*---------------------------------------*/
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark_mode {
+  background-color: #000;
+  color: #fff;
+}
+
+.dark_mode header {
+  background-image: url(./images/bg-desktop-dark.jpg);
+}
+
+/*This rule applies the background image to the header when the dark mode class is not present on the body*/
+body:not(.dark_mode) header {
+  background-image: url(./images/bg-desktop-light.jpg);
+}
+
+.brand-icon h1 {
+  color: #fff;
+  
+}
+
+.brand-icon img {
+  filter: none;
+}
+
+.dark_mode .quary input {
+  background-color: #222;
+  color: #fff;
+}
+
+.dark_mode .quary {
+  background-color: #222;
+  color: #fff;
+}
+
+.dark_mode .todos-container {
+  background-color: #222;
+}
+
+.dark_mode .list li {
+  border-color: #444;
+}
+
+.dark_mode .circle {
+  filter: none;
+}
+
+
+
+.dark_mode .items-left label {
+  color: #fff;
+}
+
+.dark_mode .clear label {
+  color: #fff;
+}
+
+.dark_mode .drag-drop p {
+  color: #6b6969;
 }
