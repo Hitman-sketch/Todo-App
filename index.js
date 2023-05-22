@@ -1,25 +1,20 @@
 function toggle_icon() {
-  var imageElement = document.getElementById("Img");
-  var bodyElement = document.body;
-  var headerElement = document.querySelector('header');
-  var brandIconElement = document.querySelector('.brand-icon');
-  var brandIconTitleElement = document.querySelector('.brand-icon h1');
-  var quaryInputElement = document.querySelector('.quary input');
-  var todosContainerElement = document.querySelector('.todos-container');
-  var listItemsElements = document.querySelectorAll('.list li');
-  var circleIconsElements = document.querySelectorAll('.circle');
-  var recordElement = document.querySelector('.record');
-  var itemsLeftLabelElement = document.querySelector('.items-left label');
-  var clearLabelElement = document.querySelector('.clear label');
-  var recordLabelsElements = document.querySelectorAll('.record label');
-  var dragDropParagraphElement = document.querySelector('.drag-drop p');
+  let imageElement = document.getElementById("Img");
+  let bodyElement = document.body;
+  let headerElement = document.querySelector('header');
+  let todosContainerElement = document.querySelector('.todos-container');
+  let listItemsElements = document.querySelectorAll('.list li');
+  let circleIconsElements = document.querySelectorAll('.circle');
+  let recordElement = document.querySelector('.record');
+  let itemsLeftLabelElement = document.querySelector('.items-left label');
+  let clearLabelElement = document.querySelector('.clear label');
+  let recordLabelsElements = document.querySelectorAll('.record label');
+  let dragDropParagraphElement = document.querySelector('.drag-drop p');
   
   if (imageElement.src.endsWith("icon-moon.svg")) {
     imageElement.src = "./images/icon-sun.svg";
     bodyElement.classList.add("dark_mode");
     headerElement.classList.add('dark_mode');
-    brandIconElement.classList.add('dark_mode');
-    brandIconTitleElement.classList.add('dark_mode');
     quaryInputElement.classList.add('dark_mode');
     todosContainerElement.classList.add('dark_mode');
     recordElement.classList.add('dark_mode');
@@ -50,7 +45,6 @@ function toggle_icon() {
     itemsLeftLabelElement.classList.remove('dark_mode');
     clearLabelElement.classList.remove('dark_mode');
     dragDropParagraphElement.classList.remove('dark_mode');
-
     listItemsElements.forEach(function (item) {
       item.classList.remove('dark_mode');
     });
@@ -65,4 +59,3 @@ function toggle_icon() {
   }
 }
 
-  

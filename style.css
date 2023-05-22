@@ -94,15 +94,14 @@ header {
   display: flex;
   margin: -45px 10px 5px 20px;
   color: #9c9494;
-  
-  
 }
+
 
 /*This is a list of all our todos*/
 .todos-container {
   background-color: #f7efef;
   width: 530px;
-  height: 363px;
+  height: 369px;
   position: absolute;
   left: 420px;
   top: 250px;
@@ -116,7 +115,7 @@ header {
 }
 
 .list li {
-  height: 62px;
+  height: 64px;
   line-height: 67px;
   border-bottom: 1px solid #ccc;
   padding-left: 70px;
@@ -138,47 +137,99 @@ header {
   
 }
 /*labels in the last-child*/
-.record {
+
+/*################## This is the tweaking of the last child in our list ##############################*/
+/*5 items left*/
+
+.items-left {
   position: absolute;
-  left: 45%;
-  right: 3.26%;
-  top: 88.5%;
-  bottom: 5.64%;
-  font-size: 14px;
-}
-/*################## This is the tewaking of the last child in our list ##############################*/
-/*5 items lefty*/
-.items-left > label {
-  margin-left: -160px;
+  width: 179px;
+  height: 14px;
+  left: 420px;
+  top: 592px;
   font-weight: 400;
   font-size: 14px;
-  
+  line-height: 14px;
   /* identical to box height */
+  text-align: left;
   letter-spacing: -0.194444px;
   color: #9495A5;
-  text-align: right;
-
+  padding-left: 25px;
+  
+  
 }
 
 /*clear completed*/
 .clear {
-  margin-left: -160px;
+  position: absolute;
+  width: 179px;
+  height: 14px;
+  left: 598px;
+  top: 592px;
   font-weight: 400;
   font-size: 14px;
- ;
+  line-height: 14px;
   /* identical to box height */
+  text-align: right;
   letter-spacing: -0.194444px;
   color: #9495A5;
-  text-align: right;
+  padding-left: 150px;
+ 
+}
+
+/* CSS code to align the three div containers and remove the gap between labels */
+.container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 196px;
+  margin-top: 294.3px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
 
 }
 
+.container div {
+  flex-basis: 33.33%;
+  text-align: center;
+  
+}
 
+.container label {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.194444px;
+  color: #9495A5;
+  cursor: pointer;
+  margin-right: 5px;
+}
 
-.record > label:nth-child(3) {
-  font-weight: 700;
+.container .cont_All, .container .cont_active, .container .cont_completed {
+  height: 14px;
+  left: 0%;
+  right: 89.16%;
+  top: calc(50% - 14px/2 - 2px);
+  letter-spacing: -0.194444px;
+  color: #9495A5;
+}
+
+.container .cont_active {
+  display: flex;
+  left: 20px;
+  right: 69.16%;
+  margin-top: 0.2px;
+}
+
+.container .cont_All label {
   color: #3A7CFD;
 }
+
+
+
 
 
 /*######################################################################*/
@@ -196,7 +247,7 @@ header {
   text-align: center;
   letter-spacing: -0.194444px;
   color: #9495A5;
-  padding-bottom: 5px;
+  
 }
 
 .attribution {
@@ -212,10 +263,10 @@ footer {
   position: relative;
   bottom: 0;
   width: 100%;
-  top: 400px;
+  top: 60px;
 }
 
-/*---------------------------------------*/
+/*-----------------DARK MODE----------------------*/
 body {
   background-color: #fff;
   color: #000;
@@ -235,7 +286,7 @@ body:not(.dark_mode) header {
   background-image: url(./images/bg-desktop-light.jpg);
 }
 
-.brand-icon h1 {
+.brand-icon,h1 {
   color: #fff;
   
 }
@@ -266,16 +317,20 @@ body:not(.dark_mode) header {
   filter: none;
 }
 
-
-
 .dark_mode .items-left label {
-  color: #fff;
+  color: #9495A5;
 }
 
 .dark_mode .clear label {
-  color: #fff;
+  color: #9495A5;
 }
 
 .dark_mode .drag-drop p {
   color: #6b6969;
 }
+
+/*-----------------DARK MODE----------------------*/
+
+
+
+
