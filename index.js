@@ -59,3 +59,44 @@ function toggle_icon() {
   }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  var circleIcon = document.getElementById('circleIcon');
+  circleIcon.addEventListener('click', function() {
+    var inputText = document.getElementById('inputText');
+    var text = inputText.value.trim();
+    if (text !== "") {
+      var todoList = document.getElementById('todoList');
+      var listItem = document.createElement('li');
+
+      var circleSpan = document.createElement('span');
+      circleSpan.classList.add('circle');
+      circleSpan.classList.add('align');
+      var circleIcon = document.createElement('img');
+      circleIcon.setAttribute('src', './images/icon-circle.svg');
+      circleIcon.setAttribute('alt', 'Circle');
+
+      var todoText = document.createElement('p');
+      todoText.textContent = text;
+
+      listItem.appendChild(circleSpan);
+      circleSpan.appendChild(circleIcon);
+      listItem.appendChild(todoText);
+
+       // Hide the footer and drag and drop section
+       /*var footer = document.querySelector('footer');
+       var dragDrop = document.querySelector('.drag-drop');
+       footer.classList.add('hidden');
+       dragDrop.classList.add('hidden');*/
+
+      // Check if there is a first item
+      var firstItem = todoList.firstChild;
+      if (firstItem) {
+        todoList.insertBefore(listItem, firstItem);
+      } else {
+        todoList.appendChild(listItem);
+      }
+
+      inputText.value = "";
+    }
+  });
+});

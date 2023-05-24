@@ -18,6 +18,10 @@
   
   </head>
 
+</script>
+
+
+
   <body>
     
     <header>
@@ -27,72 +31,84 @@
       </div>
       
       <div class="quary">
-        <input type="text" class="center-input" placeholder="Create a new todo...">
-        <img src="./images/icon-circle.svg" alt="moon" class="circle" onclick="toggleIcon()">
-        <img src="./images/icon-check.svg" alt="Check Icon" class="check">
+        <input type="text" id="inputText" class="center-input" placeholder="Create a new todo...">
+        <img src="./images/icon-circle.svg" alt="circle" class="circle" id="circleIcon">
+
       </div>
     </header>
     
     <div class="todos-container">
-      <ul class="list">
-        <li>Go for a jog</li>
-        <img src="./images/icon-circle.svg" alt="a circle" class="circle">
+      <ul id="todoList" class="list">
+
+        <li>
+          <img src="./images/icon-circle.svg" alt="a circle" class="circle" >
+          <span>Go for a jog</span> 
+        </li>
+        
+        <li>
+          <img src="./images/icon-circle.svg" alt="a circle" class="circle" >
+          <span>Code Django project</span> 
+        </li>
+        
+        
+        <li>
+          <img src="./images/icon-circle.svg" alt="a circle" class="circle" >
+          <span>Pray for an hour</span> 
+        </li>
+        
+
+        <li>
+          <img src="./images/icon-circle.svg" alt="a circle" class="circle" >
+          <span>Watch anime for 3 hours</span>
+        </li>
+        
+
+        <li>
+          <img src="./images/icon-circle.svg" alt="a circle" class="circle" >
+          <span>Get something to eat</span>   
+        </li>
+        
       
-        
-        <li>Code Django project</li>
-        <img src="./images/icon-circle.svg" alt="a circle" class="circle">
-        
-        
-        <li>Pray for an hour</li>
-        <img src="./images/icon-circle.svg" alt="a circle" class="circle">
-
-        <li>Watch anime for 3 hours</li>
-        <img src="./images/icon-circle.svg" alt="a circle" class="circle">
-
-        <li>Get something to eat</li>
-        <img src="./images/icon-circle.svg" alt="a circle" class="circle">
-
-                
+        <div class="items-left">
+          <label>5 items left</label>
+        </div>
+    
+        <div class="clear">
+          <label>Clear Completed</label>
+        </div>
+    
+        <div class="mini-label-container">
+          <div class="cont_All">
+            <label>All</label>
+          </div>
+          <div class="cont_active">
+            <label>Active</label>
+          </div>
+          <div class="cont_completed">
+            <label>Completed</label>
+          </div>
+        </div>
+  
       </ul>
     </div>
 
-    <div class="items-left">
-      <label>5 items left</label>
-    </div>
-
-    <div class="clear">
-      <label>Clear Completed</label>
-    </div>
-
-    <div class="container">
-      <div class="cont_All">
-        <label>All</label>
-      </div>
-      <div class="cont_active">
-        <label>Active</label>
-      </div>
-      <div class="cont_completed">
-        <label>Completed</label>
-      </div>
-    </div>
-
-  
     
-        
-
-
+    
+    <!--  ################################################################ -->
     <div class="drag-drop">
       <p> Drag and drop to reorder list</p>
     </div>
     <div class="dark_mode"></div>
+    <footer>
+      <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">Michael Nii Attoh</a>.
+      </div>
   
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   </body>
 
-  <footer>
-    <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Michael Nii Attoh</a>.
-    </div>
-
-  </footer>
+  
 </html>
