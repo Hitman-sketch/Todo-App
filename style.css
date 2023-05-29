@@ -113,17 +113,61 @@ header {
 }
 
 /*checkable circle functioning as a return function*/
+.icon-circle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  left: 24px;
+  color: gray;
+}
+
 .circle {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 23px; /* Adjust the left positioning as needed */
+  left: 24px;
+  color: rgb(211, 206, 206);
+
+}
+/* CSS rule for the check icon */
+.icon-check {
+  width: 23px;
+  height: 23px;
+  background: center url(./images/icon-check.svg) no-repeat, linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border-radius: 50%;
+  top: 45%;
+  left: 24px;
+  transform: translateY(-50%);
+  position: absolute
+}
+
+.hover {
+  border: 2px solid hsl(220, 98%, 61%);
+  border-radius: 100%;
+  width : 22px;
+  height: 22px;
+}
+/*------------------------------------------------------------------*/
+
+
+/* Styling for the cross icon */
+.icon-cross {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+.strikethrough {
+  text-decoration: line-through;
 }
 
 
 
-/*This is a list of all our todos*/
 
+/*This is the container that contains the input and it a long rectangualr box that fills up the input*/
 .todos-container {
   background-color: #f7efef;
   width: 529px;
@@ -136,12 +180,7 @@ header {
   overflow-y:hidden;
   overflow-x: hidden; 
   
-  
 }
-
-
-/* ... Remaining CSS code ... */
-
 
 .list {
   list-style-type: none;
@@ -159,24 +198,11 @@ header {
   width: auto;
 }
 
-
-
-
 /*made adjustment to the first list*/
 .list li:first-child {
   height: 65px; /* Adjust the height of the first item */
 
 }
-
-.list li:last-child {
-  height: 65px;
-  border-bottom: 1px solid #969494; /* Add this line to display the separating line */
-  font-size: 18px;
-  
-}
-
-/*labels in the last-child*/
-
 /*################## This is the tweaking of the last child in our list ##############################*/
 /*5 items left*/
 
@@ -184,15 +210,14 @@ header {
   position: absolute;
   width: 179px;
   height: 14px;
-  left: 25px;
+  left: -195px;
   font-weight: 400;
   font-size: 14px;
   line-height: 14px;
-  /* identical to box height */
   text-align: left;
   letter-spacing: -0.194444px;
   color: #9495A5;
-  margin-top: 10px;
+  margin-top: 1px;
   
   
 }
@@ -202,14 +227,14 @@ header {
   position: absolute;
   width: 179px;
   height: 14px;
-  left: 327px;
+  left: 200px;
   font-weight: 400;
   font-size: 14px;
   line-height: 14px;
   text-align: right;
   letter-spacing: -0.194444px;
   color: #9495A5;
-  margin-top: 10px;
+  margin-top: 1px;
 }
 
 /* CSS code to align the three div containers and remove the gap between labels */
@@ -221,9 +246,9 @@ header {
   margin-left: auto;
   margin-right: auto;
   max-width: 196px;
-  margin-top: 10px;
+  margin-top: 20.6px;
   font-size: 14px;
-  height: 30px;
+  height: 32.5px;
   
 }
 
@@ -234,8 +259,6 @@ header {
 
 
 .mini-label-container .cont_All, .mini-label-container .cont_active, .mini-label-container .cont_completed {
-  right: 89.16%;
-  top: -10px;
   letter-spacing: -0.194444px;
   color: #9495A5;
 }
@@ -339,6 +362,7 @@ body:not(.dark_mode) header {
 .dark_mode .circle {
   filter: none;
 }
+
 
 .dark_mode .items-left label {
   color: #9495A5;
