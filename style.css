@@ -198,6 +198,8 @@ header {
   width: auto;
 }
 
+
+
 /*made adjustment to the first list*/
 .list li:first-child {
   height: 65px; /* Adjust the height of the first item */

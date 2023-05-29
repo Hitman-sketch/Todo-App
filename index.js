@@ -68,24 +68,18 @@ function toggle_icon() {
 
 //---------------------------------------------------------------------------------------------
 
-//----------------------------------//
-var circleIcons = document.querySelectorAll('.icon-circle');
 // Function to toggle the list item when the circle icon is clicked
 function toggleListItem() {
-  
-
-  // Toggle the 'icon-check' class on the circle icon
+   // Toggle the 'icon-check' class on the circle icon
   this.classList.toggle('icon-check');
-
-  // Find the corresponding list item and todo text
-  var listItem = this.parentNode;
-  var todoText = listItem.querySelector('p');
-
+   // Find the corresponding list item and todo text
+  let listItem = this.parentNode;
+  let todoText = listItem.querySelector('p');
   // Toggle the strikethrough effect on the todo text
   todoText.classList.toggle('strikethrough');
 
   // Check if the cross icon already exists
-  var crossIcon = listItem.querySelector('.icon-cross');
+  let crossIcon = listItem.querySelector('.icon-cross');
   if (crossIcon) {
     // Remove the cross icon if it already exists
     listItem.removeChild(crossIcon);
@@ -96,34 +90,42 @@ function toggleListItem() {
     crossIcon.setAttribute('alt', 'Cross');
     crossIcon.classList.add('icon-cross');
     listItem.appendChild(crossIcon);
+
+    // Click event listener to the cross icon removes the item from the list when the cross icon is clicked
+    crossIcon.addEventListener('click', function () {
+      listItem.remove();
+    });
   }
 }
 
+
 // Function to handle adding a new list item
 function addListItem() {
-  var inputText = document.getElementById('inputText');
-  var text = inputText.value.trim();
-  if (text !== "") {
-    var todoList = document.getElementById('todoList');
-    var listItem = document.createElement('li');
+  let inputText = document.getElementById('inputText');
+  let text = inputText.value.trim();
+  if (text !== '') {
+    let todoList = document.getElementById('todoList');
+    let listItem = document.createElement('li');
 
-    // Create circle icon and appended it to the list item
-    var circleSpan = document.createElement('span');
+    // Make the list item draggable
+    listItem.draggable = true;
+     // Create circle icon and append it to the list item
+    let circleSpan = document.createElement('span');
     circleSpan.classList.add('icon-circle');
     circleSpan.classList.add('align');
-    var circleIcon = document.createElement('img');
+    let circleIcon = document.createElement('img');
     circleIcon.setAttribute('src', './images/icon-circle.svg');
     circleIcon.setAttribute('alt', 'circle');
     circleSpan.appendChild(circleIcon);
     listItem.appendChild(circleSpan);
 
-    // Create todo text element and appended it to the list item
-    var todoText = document.createElement('p');
+    // Create todo text element and append it to the list item
+    let todoText = document.createElement('p');
     todoText.textContent = text;
     listItem.appendChild(todoText);
 
     // Check if there is a first item in the list
-    var firstItem = todoList.firstChild;
+    let firstItem = todoList.firstChild;
     if (firstItem) {
       todoList.insertBefore(listItem, firstItem);
     } else {
@@ -132,17 +134,93 @@ function addListItem() {
 
     // Add the event listener to the new circle icons
     circleSpan.addEventListener('click', toggleListItem);
-    circleSpan.addEventListener('mouseover', function() {
+    circleSpan.addEventListener('mouseover', function () {
       this.classList.add('hover');
     });
-    circleSpan.addEventListener('mouseout', function() {
+    circleSpan.addEventListener('mouseout', function () {
       this.classList.remove('hover');
     });
-    inputText.value = "";
+
+    
+    // Add drag and drop event listeners to the list item
+    listItem.addEventListener('dragstart', handleDragStart);
+    listItem.addEventListener('dragenter', handleDragEnter);
+    listItem.addEventListener('dragover', handleDragOver);
+    listItem.addEventListener('dragleave', handleDragLeave);
+    listItem.addEventListener('drop', handleDrop);
+    listItem.addEventListener('dragend', handleDragEnd);
+
+    // Append the new list item to the todoList
+    todoList.insertBefore(listItem, todoList.firstChild);
+
+
+    // Clear the input text
+    inputText.value = '';
+  }
+}
+// Variables to store references to the dragged item and the current drop target
+let draggedItem = null;
+let dropTarget = null;
+
+// Function to handle dragging of list items
+function handleDragStart(event) {
+  draggedItem = this;
+  this.classList.add('dragging');
+  // Set the drag effect to 'move'
+  event.dataTransfer.effectAllowed = 'move';
+  //Type of data to drag and drop
+  event.dataTransfer.setData('text/plain', '');
+}
+
+// Function to handle the dragenter event
+function handleDragEnter(event) {
+  if (this !== draggedItem) {
+    this.classList.add('dragover');
+    dropTarget = this;
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  var circleIcon = document.getElementById('circleIcon');
+// Function to handle the dragover event
+function handleDragOver(event) {
+  event.preventDefault();
+   // Set the effect to 'move' for the dragover event
+  event.dataTransfer.dropEffect = 'move';
+}
+
+// Function to handle the dragleave event
+function handleDragLeave(event) {
+  if (this !== draggedItem) {
+    this.classList.remove('dragover');
+  }
+}
+
+// Function to handle the drop event
+function handleDrop(event) {
+  event.preventDefault();
+  if (this !== draggedItem) {
+    const listItem = Array.from(this.parentNode.children);
+    const draggedIndex = listItem.indexOf(draggedItem);
+    const dropIndex = listItem.indexOf(this);
+    const isAfter = dropIndex > draggedIndex;
+    if (isAfter) {
+      this.parentNode.insertBefore(draggedItem, this.nextSibling);
+    } else {
+      this.parentNode.insertBefore(draggedItem, this);
+    }
+    this.classList.remove('dragover');
+    draggedItem = null;
+    dropTarget = null;
+  }
+}
+
+// Function to handle the dragend event
+function handleDragEnd() {
+  this.classList.remove('dragging');
+  const listItems = Array.from(document.querySelectorAll('#todoList li'));
+  listItems.forEach((item) => item.classList.remove('dragover'));
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  let circleIcon = document.getElementById('circleIcon');
   circleIcon.addEventListener('click', addListItem);
 });
