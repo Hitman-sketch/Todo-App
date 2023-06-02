@@ -65,8 +65,7 @@ function toggle_icon() {
   }
 }
 
-
-//---------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------
 // Function to toggle the list item when the circle icon is clicked
 function toggleListItem() {
   // Toggle the 'icon-check' class on the circle icon
@@ -75,7 +74,12 @@ function toggleListItem() {
   let listItem = this.parentNode;
   let todoText = listItem.querySelector('p');
   // Toggle the strikethrough effect on the todo text
-  todoText.classList.toggle('strikethrough');
+  if (this.classList.contains('icon-check')) {
+    todoText.style.textDecoration = 'line-through';
+  } else {
+    todoText.style.textDecoration = 'none';
+  }
+ 
 
   // Check if the cross icon already exists
   let crossIcon = listItem.querySelector('.icon-cross');
@@ -160,7 +164,6 @@ function addListItem() {
     updateItemsLeft();
   }
 }
-
 // Variables to store references to the dragged item and the current drop target
 let draggedItem = null;
 let dropTarget = null;
@@ -225,16 +228,6 @@ function handleDragEnd() {
   listItems.forEach((item) => item.classList.remove('dragover'));
 }
 
-// Function to handle the click event on the circle icon
-function handleCircleIconClick(event) {
-  toggleListItem.call(event.target);
-}
-
-// Function to handle the click event on the check icon
-function handleCheckIconClick(event) {
-  toggleListItem.call(event.target.parentNode);
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   let circleIcon = document.getElementById('circleIcon');
   circleIcon.addEventListener('click', addListItem);
@@ -257,42 +250,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let clearCompletedLabel = document.querySelector('.clear');
   clearCompletedLabel.addEventListener('click', clearCompletedTodos);
-
-  // Function to toggle the list item when the circle icon is clicked
-  function toggleListItem() {
-    // Toggle the 'icon-check' class on the circle icon
-    this.classList.toggle('icon-check');
-    // Find the corresponding list item and todo text
-    let listItem = this.parentNode;
-    let todoText = listItem.querySelector('p');
-    // Toggle the strikethrough effect on the todo text
-    todoText.classList.toggle('strikethrough');
-
-    updateItemsLeft();
-  }
-
-  // Function to handle the click event on the circle icon
-  function handleCircleIconClick(event) {
-    toggleListItem.call(event.target);
-  }
-
-  // Function to handle the click event on the check icon
-  function handleCheckIconClick(event) {
-    toggleListItem.call(event.target.parentNode);
-  }
-
-  // Add click event listeners to the circle icons in all sections
-  let circleIcons = document.querySelectorAll('.icon-circle');
-  circleIcons.forEach((circleIcon) => {
-    circleIcon.addEventListener('click', handleCircleIconClick);
-  });
-
-  // Add click event listeners to the check icons in all sections
-  let checkIcons = document.querySelectorAll('.icon-check');
-  checkIcons.forEach((checkIcon) => {
-    checkIcon.addEventListener('click', handleCheckIconClick);
-  });
-
 
   function showAllTodos() {
     let todos = document.querySelectorAll('#todoList li');
@@ -335,14 +292,13 @@ document.addEventListener('DOMContentLoaded', function () {
     completedTodos.forEach((completedTodo) => {
       let listItem = completedTodo.parentNode;
       let todoText = listItem.querySelector('p');
-      if (todoText.classList.contains('strikethrough')) {
+      if (completedTodo.classList.contains('icon-check') && todoText.style.textDecoration === 'line-through') {
         listItem.remove();
       }
     });
-
     updateItemsLeft();
   }
-
+  
   // Initial update of items left count
   updateItemsLeft();
 });
