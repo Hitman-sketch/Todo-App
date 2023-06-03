@@ -50,11 +50,11 @@ header {
   line-height: 40px;
 /* identical to box height */
   letter-spacing: 15px;
-  color: #FFFFFF;
+  color: hsl(0, 0%, 100%);
   margin-right: 10px;
     
 }
-  
+
 /*moon icon positioning*/
 .brand-icon img {
   margin-left: 680px;
@@ -67,7 +67,7 @@ header {
 
 /*This is the container that contains the input and it a long rectangualr box that fills up the input*/
 .quary {
-  background-color: hsl(0, 100%, 99%);
+  background-color: hsl(0, 0%, 100%);
   position: absolute;
   width: 530px;
   height: 64px;
@@ -93,8 +93,8 @@ header {
   line-height: 18px;
   /* identical to box height */
   letter-spacing: -0.194444px;
-  color: #9495A5;
-  opacity: .5;
+  color: hsl(235, 7%, 64%);
+  opacity: 0.5;
   
 }
 
@@ -106,7 +106,7 @@ header {
   line-height: 18px;
   /* identical to box height */
   letter-spacing: -0.194444px;
-  color: #9495A5;
+  color: hsl(230, 4%, 70%);
   opacity: 1;
 }
 
@@ -116,7 +116,7 @@ header {
   top: 50%;
   transform: translateY(-50%);
   left: 24px;
-  color: gray;
+  color: hsl(0, 8%, 91%);
 }
 
 .circle {
@@ -145,7 +145,7 @@ header {
   width : 22px;
   height: 22px;
 }
-/*------------------------------------------------------------------*/
+/*-----------------------------*/
 
 
 /* Styling for the cross icon */
@@ -164,14 +164,14 @@ header {
 
 /*This is the container that contains the input and it a long rectangualr box that fills up the input*/
 .todos-container {
-  background-color: #f7efef;
+  background-color: hsl(0, 0%, 100%);
   width: 533px;
   max-height: max-content;
   position: relative;
   left: 419px;
   top: -50px;
   border-radius: 5px ;
-  box-shadow: 0 0 15px rgba(170, 170, 170, 0.2);
+  box-shadow: 0 5px 10px 5px hsl(236, 9%, 61%);
   overflow-y:hidden;
   overflow-x: hidden;
   
@@ -285,14 +285,11 @@ header {
 
 /* --------------------------- */
 
-
-
 .align {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 /*###################################*/
 
@@ -320,15 +317,17 @@ footer {
   top: 25px;
 }
 
+
+
 /*-----------------DARK MODE----------------------*/
 body {
-  background-color: #ffffff;
+  background-color: hsl(0, 0%, 100%);
   color: hsl(235, 21%, 11%);
 }
 
 .dark_mode {
   background-color: hsl(235, 21%, 11%);
-  color: #fff;
+  color: hsl(0, 0%, 100%);
 }
 
 .dark_mode header {
@@ -400,7 +399,7 @@ body:not(.dark_mode) header {
 @media (max-width: 375px) {
   body:not(.dark_mode) header {
     background-image: url(./images/bg-mobile-light.jpg) no-repeat;
-    background-size: contain no-repeat;
+    background-size: 100% 100% no-repeat;
     background-position: center 20px no-repeat;
   }
 
@@ -577,7 +576,22 @@ body:not(.dark_mode) header {
     left: 17px;
   }
 
+  .icon-check {
+    border-radius: 100%;
+  }
 
+  .icon-circle {
+    border-radius: 100%;
+  }
+
+  .dragging {
+    opacity: 0.5;
+  }
+  
+  .dragover {
+    border-style: none;
+  }
+  
 }
 /*-----------mobile mode end--------------*/
 
@@ -586,12 +600,11 @@ body:not(.dark_mode) header {
 /*----Desktop mode start----*/
 
 @media (min-width: 376px) and (max-width: 1440px) {
-  
-
   .all-completed {
     display: none;
   }
-
- 
 }
 /*----Desktop mode end----*/
+
+
+

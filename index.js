@@ -66,6 +66,58 @@ function toggle_icon() {
 }
 
 //----------------------------------------------------------------------
+// Function to set a cookie
+function setCookie(name, value, days) {
+  const expires = new Date();
+  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+}
+
+// Function to get the value of a cookie
+function getCookie(name) {
+  const cookieName = `${name}=`;
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    let cookie = cookies[i].trim();
+    if (cookie.indexOf(cookieName) === 0) {
+      return cookie.substring(cookieName.length, cookie.length);
+    }
+  }
+  return null;
+}
+
+// Function to apply the preferred mode
+function applyPreferredMode(mode) {
+  const body = document.body;
+  if (mode === 'dark') {
+    body.classList.add('dark-mode');
+  } else {
+    body.classList.remove('dark-mode');
+  }
+}
+
+// Function to toggle between modes
+function toggleMode() {
+  const body = document.body;
+  const isDarkMode = body.classList.toggle('dark-mode');
+  setCookie('preferredMode', isDarkMode ? 'dark' : 'light', 30); // Store the preferred mode for 30 days
+}
+
+// Function to initialize the mode based on user preference
+function initializeMode() {
+  const preferredMode = getCookie('preferredMode');
+  applyPreferredMode(preferredMode);
+  
+  // Add event listener to the mode toggle button
+  const toggleButton = document.getElementById('modeToggle');
+  toggleButton.addEventListener('click', toggleMode);
+}
+
+// Apply the preferred mode when the page loads
+window.addEventListener('load', initializeMode);
+
+
+
 // Function to toggle the list item when the circle icon is clicked
 function toggleListItem() {
   // Toggle the 'icon-check' class on the circle icon
@@ -138,7 +190,7 @@ function addListItem() {
       todoList.appendChild(listItem);
     }
 
-    // Add the event listener to the new circle icons
+    // Add the event listener to the new circle icons hover and click events
     circleSpan.addEventListener('click', toggleListItem);
     circleSpan.addEventListener('mouseover', function () {
       this.classList.add('hover');
@@ -147,15 +199,19 @@ function addListItem() {
       this.classList.remove('hover');
     });
 
-    // Add drag and drop event listeners to the list item
-    listItem.addEventListener('dragstart', handleDragStart);
-    listItem.addEventListener('dragenter', handleDragEnter);
-    listItem.addEventListener('dragover', handleDragOver);
-    listItem.addEventListener('dragleave', handleDragLeave);
-    listItem.addEventListener('drop', handleDrop);
-    listItem.addEventListener('dragend', handleDragEnd);
+    // Add event listeners for mobile view
+    const listItemsMobile = document.querySelectorAll('#todoList li');
+    listItemsMobile.forEach((item) => {
+      item.addEventListener('dragstart', handleDragStart);
+      item.addEventListener('dragover', handleDragOver);
+      item.addEventListener('drop', handleDrop);
+      item.addEventListener('touchstart', handleTouchStart);
+      item.addEventListener('touchmove', handleTouchMove);
+      item.addEventListener('touchend', handleTouchEnd);
+      
+      });
 
-    // Append the new list item to the todoList
+    //Insert the new list item at the top of the list
     todoList.insertBefore(listItem, todoList.firstChild);
 
     // Clear the input text
@@ -164,6 +220,7 @@ function addListItem() {
     updateItemsLeft();
   }
 }
+
 // Variables to store references to the dragged item and the current drop target
 let draggedItem = null;
 let dropTarget = null;
@@ -176,14 +233,7 @@ function handleDragStart(event) {
   event.dataTransfer.effectAllowed = 'move';
   // Type of data to drag and drop
   event.dataTransfer.setData('text/plain', '');
-}
 
-// Function to handle the dragenter event
-function handleDragEnter(event) {
-  if (this !== draggedItem) {
-    this.classList.add('dragover');
-    dropTarget = this;
-  }
 }
 
 // Function to handle the dragover event
@@ -191,13 +241,6 @@ function handleDragOver(event) {
   event.preventDefault();
   // Set the effect to 'move' for the dragover event
   event.dataTransfer.dropEffect = 'move';
-}
-
-// Function to handle the dragleave event
-function handleDragLeave(event) {
-  if (this !== draggedItem) {
-    this.classList.remove('dragover');
-  }
 }
 
 // Function to handle the drop event
@@ -221,23 +264,70 @@ function handleDrop(event) {
   }
 }
 
-// Function to handle the dragend event
-function handleDragEnd() {
-  this.classList.remove('dragging');
-  const listItems = Array.from(document.querySelectorAll('#todoList li'));
-  listItems.forEach((item) => item.classList.remove('dragover'));
+
+// Function to handle touchstart event
+function handleTouchStart(event) {
+  draggedItem = this;
+  draggedItem.classList.add('dragging');
 }
+
+// Function to handle touchmove event
+function handleTouchMove(event) {
+  event.preventDefault();
+  const touch = event.targetTouches[0];
+  const offsetX = touch.clientX - touch.target.getBoundingClientRect().left;
+  const offsetY = touch.clientY - touch.target.getBoundingClientRect().top;
+  draggedItem.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  draggedItem.style.opacity = '0.5';
+
+  // Find the drop target based on touch coordinates
+  const x = touch.clientX;
+  const y = touch.clientY;
+  dropTarget = document.elementFromPoint(x, y);
+}
+
+// Function to handle touchend event
+function handleTouchEnd(event) {
+  if (dropTarget !== null && draggedItem !== dropTarget) {
+    const listItem = Array.from(draggedItem.parentNode.children);
+    const draggedIndex = listItem.indexOf(draggedItem);
+    const dropIndex = listItem.indexOf(dropTarget);
+    const isAfter = dropIndex > draggedIndex;
+  
+    // Insert the dragged item after the drop target
+    if (isAfter) {
+      dropTarget.parentNode.insertBefore(draggedItem, dropTarget.nextElementSibling);
+    } else {
+      dropTarget.parentNode.insertBefore(draggedItem, dropTarget);
+    }
+  }
+  draggedItem.classList.remove('dragging');
+  draggedItem.style.transform = '';
+  draggedItem.style.opacity = '';
+  draggedItem = null;
+  dropTarget = null;
+}
+
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
   let circleIcon = document.getElementById('circleIcon');
   circleIcon.addEventListener('click', addListItem);
 
-  let todoList = document.getElementById('todoList');
-  todoList.addEventListener('click', function (event) {
-    if (event.target.tagName === 'SPAN') {
-      toggleListItem.call(event.target);
-    }
-  });
+  // ...mobile view all, active, completed labels functionality
+  
+  let allLabel1 = document.querySelector('.all');
+  allLabel1.addEventListener('click', showAllTodos);
+
+  let activeLabel1 = document.querySelector('.active');
+  activeLabel1.addEventListener('click', showActiveTodos);
+
+  let completedLabel1 = document.querySelector('.completed');
+  completedLabel1.addEventListener('click', showCompletedTodos);
+
+  // ........Desktop view all, active, completed functionality...............
+
 
   let allLabel = document.querySelector('.cont_All');
   allLabel.addEventListener('click', showAllTodos);
