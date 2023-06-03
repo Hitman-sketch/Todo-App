@@ -585,7 +585,7 @@ body:not(.dark_mode) header {
   }
 
   .dragging {
-    opacity: 0.5;
+    opacity: 1;
   }
   
   .dragover {

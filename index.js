@@ -153,10 +153,6 @@ function addListItem() {
       item.addEventListener('dragstart', handleDragStart);
       item.addEventListener('dragover', handleDragOver);
       item.addEventListener('drop', handleDrop);
-      item.addEventListener('touchstart', handleTouchStart, { passive: true });
-      item.addEventListener('touchmove', handleTouchMove, { passive: true });
-      item.addEventListener('touchend', handleTouchEnd, { passive: true });
-      
       });
 
     //Insert the new list item at the top of the list
@@ -211,41 +207,6 @@ function handleDrop(event) {
     updateItemsLeft();
   }
 }
-
-// Function to handle touchstart event
-function handleTouchStart(event) {
-  draggedItem = this;
-  this.classList.add('dragging');
-}
-
-// Function to handle touchmove event
-function handleTouchMove(event) {
-  event.preventDefault();
-  const touch = event.targetTouches[0];
-  const offsetX = touch.clientX - touch.target.offsetLeft;
-  const offsetY = touch.clientY - touch.target.offsetTop;
-  draggedItem.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-}
-
-// Function to handle touchend event
-function handleTouchEnd(event) {
-  if (this !== draggedItem) {
-    const listItem = Array.from(this.parentNode.children);
-    const draggedIndex = listItem.indexOf(draggedItem);
-    const dropIndex = listItem.indexOf(this);
-    const isAfter = dropIndex > draggedIndex;
-    if (isAfter) {
-      this.parentNode.insertBefore(draggedItem, this.nextSibling);
-    } else {
-      this.parentNode.insertBefore(draggedItem, this);
-    }
-  }
-  draggedItem.classList.remove('dragging');
-  draggedItem.style.transform = '';
-  draggedItem = null;
-}
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
   let circleIcon = document.getElementById('circleIcon');
