@@ -66,58 +66,6 @@ function toggle_icon() {
 }
 
 //----------------------------------------------------------------------
-// Function to set a cookie
-function setCookie(name, value, days) {
-  const expires = new Date();
-  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
-}
-
-// Function to get the value of a cookie
-function getCookie(name) {
-  const cookieName = `${name}=`;
-  const cookies = document.cookie.split(';');
-  for (let i = 0; i < cookies.length; i++) {
-    let cookie = cookies[i].trim();
-    if (cookie.indexOf(cookieName) === 0) {
-      return cookie.substring(cookieName.length, cookie.length);
-    }
-  }
-  return null;
-}
-
-// Function to apply the preferred mode
-function applyPreferredMode(mode) {
-  const body = document.body;
-  if (mode === 'dark') {
-    body.classList.add('dark-mode');
-  } else {
-    body.classList.remove('dark-mode');
-  }
-}
-
-// Function to toggle between modes
-function toggleMode() {
-  const body = document.body;
-  const isDarkMode = body.classList.toggle('dark-mode');
-  setCookie('preferredMode', isDarkMode ? 'dark' : 'light', 30); // Store the preferred mode for 30 days
-}
-
-// Function to initialize the mode based on user preference
-function initializeMode() {
-  const preferredMode = getCookie('preferredMode');
-  applyPreferredMode(preferredMode);
-  
-  // Add event listener to the mode toggle button
-  const toggleButton = document.getElementById('modeToggle');
-  toggleButton.addEventListener('click', toggleMode);
-}
-
-// Apply the preferred mode when the page loads
-window.addEventListener('load', initializeMode);
-
-
-
 // Function to toggle the list item when the circle icon is clicked
 function toggleListItem() {
   // Toggle the 'icon-check' class on the circle icon
@@ -205,9 +153,9 @@ function addListItem() {
       item.addEventListener('dragstart', handleDragStart);
       item.addEventListener('dragover', handleDragOver);
       item.addEventListener('drop', handleDrop);
-      item.addEventListener('touchstart', handleTouchStart);
-      item.addEventListener('touchmove', handleTouchMove);
-      item.addEventListener('touchend', handleTouchEnd);
+      item.addEventListener('touchstart', handleTouchStart, { passive: true });
+      item.addEventListener('touchmove', handleTouchMove, { passive: true });
+      item.addEventListener('touchend', handleTouchEnd, { passive: true });
       
       });
 
@@ -264,50 +212,38 @@ function handleDrop(event) {
   }
 }
 
-
 // Function to handle touchstart event
 function handleTouchStart(event) {
   draggedItem = this;
-  draggedItem.classList.add('dragging');
+  this.classList.add('dragging');
 }
 
 // Function to handle touchmove event
 function handleTouchMove(event) {
   event.preventDefault();
   const touch = event.targetTouches[0];
-  const offsetX = touch.clientX - touch.target.getBoundingClientRect().left;
-  const offsetY = touch.clientY - touch.target.getBoundingClientRect().top;
+  const offsetX = touch.clientX - touch.target.offsetLeft;
+  const offsetY = touch.clientY - touch.target.offsetTop;
   draggedItem.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-  draggedItem.style.opacity = '0.5';
-
-  // Find the drop target based on touch coordinates
-  const x = touch.clientX;
-  const y = touch.clientY;
-  dropTarget = document.elementFromPoint(x, y);
 }
 
 // Function to handle touchend event
 function handleTouchEnd(event) {
-  if (dropTarget !== null && draggedItem !== dropTarget) {
-    const listItem = Array.from(draggedItem.parentNode.children);
+  if (this !== draggedItem) {
+    const listItem = Array.from(this.parentNode.children);
     const draggedIndex = listItem.indexOf(draggedItem);
-    const dropIndex = listItem.indexOf(dropTarget);
+    const dropIndex = listItem.indexOf(this);
     const isAfter = dropIndex > draggedIndex;
-  
-    // Insert the dragged item after the drop target
     if (isAfter) {
-      dropTarget.parentNode.insertBefore(draggedItem, dropTarget.nextElementSibling);
+      this.parentNode.insertBefore(draggedItem, this.nextSibling);
     } else {
-      dropTarget.parentNode.insertBefore(draggedItem, dropTarget);
+      this.parentNode.insertBefore(draggedItem, this);
     }
   }
   draggedItem.classList.remove('dragging');
   draggedItem.style.transform = '';
-  draggedItem.style.opacity = '';
   draggedItem = null;
-  dropTarget = null;
 }
-
 
 
 
