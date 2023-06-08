@@ -9,7 +9,6 @@ function toggle_icon() {
   let recordElement = document.querySelector('.record');
   let itemsLeftLabelElement = document.querySelector('.items-left label');
   let clearLabelElement = document.querySelector('.clear label');
-  let recordLabelsElements = document.querySelectorAll('.record label');
   let dragDropParagraphElement = document.querySelector('.drag-drop p');
   
   if (imageElement.src.endsWith("icon-moon.svg")) {
@@ -33,17 +32,12 @@ function toggle_icon() {
       icon.classList.add('dark_mode');
     });
 
-    // Added dark mode class to record labels
-    recordLabelsElements.forEach(function (label) {
-      label.classList.add('dark_mode');
-    });
   } else {
     // Switch to light mode
     imageElement.src = "./images/icon-moon.svg";
     bodyElement.classList.remove("dark_mode");
     headerElement.classList.remove('dark_mode');
     todosContainerElement.classList.remove('dark_mode');
-    recordElement.classList.remove('dark_mode');
     itemsLeftLabelElement.classList.remove('dark_mode');
     clearLabelElement.classList.remove('dark_mode');
     dragDropParagraphElement.classList.remove('dark_mode');
@@ -56,11 +50,6 @@ function toggle_icon() {
     // Removed dark mode class from circle icons
     circleIconsElements.forEach(function (icon) {
       icon.classList.remove('dark_mode');
-    });
-
-    // Removed dark mode class from  labels
-    recordLabelsElements.forEach(function (label) {
-      label.classList.remove('dark_mode');
     });
   }
 }
@@ -147,7 +136,7 @@ function addListItem() {
       this.classList.remove('hover');
     });
 
-    // Add event listeners for mobile view
+    // Add event listeners for mobile view and Destop view drag and drop functionality
     const listItemsMobile = document.querySelectorAll('#todoList li');
     listItemsMobile.forEach((item) => {
       item.addEventListener('dragstart', handleDragStart);
