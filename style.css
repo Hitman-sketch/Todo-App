@@ -273,6 +273,8 @@ header {
   margin-top: -15px;
   color: #9495A5;
 }
+
+
 .cont_completed a {
   text-decoration: none;
   color: #9495A5;
@@ -407,10 +409,6 @@ body:not(.dark_mode) header {
     background-size: contain no-repeat;
     background-position: center 20px no-repeat;
   }
-
-  
-  /*checkable circle functioning as a return function*/
-
 
   .brand-icon {
     width: 100%;
@@ -575,11 +573,7 @@ body:not(.dark_mode) header {
     left: 17px;
   }
 
-  .icon-check {
-    border-radius: 100%;
-  }
-
-  .icon-circle {
+  .icon-check, .icon-circle {
     border-radius: 100%;
   }
 
@@ -604,6 +598,196 @@ body:not(.dark_mode) header {
   }
 }
 /*----Desktop mode end----*/
+
+
+
+/* tablet mode*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .all-completed {
+    display: none;
+  }
+
+
+  .brand-icon {
+    width: 100%;
+    height: 100%;
+    left: 10px;
+    top: 10px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .brand-icon h1 {
+    position: relative;
+    height: 20px;
+    width: 109px;
+    font-size: 30px;
+    line-height: 30px;
+    letter-spacing: 10px;
+    margin-right: 92%;
+    top: 130px;
+    left: 20px;
+  }
+
+  .brand-icon img {
+    margin-left: 300px;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 130px;
+    left: 20px;
+
+    
+    
+  }
+
+  .quary {
+    position: relative;
+    width: 327px;
+    height: 48px;
+    left: 0;
+    top: 78px;
+    border-radius: 5px;
+    background-color: #fff;
+
+  }
+
+  .center-input {
+    width: 50%;
+    height: 100%;
+    padding-right: 0;
+    margin-left: -40px;
+    border: none;
+    background-color: #fff;
+  }
+
+  .icon-circle {
+    left: 17px;
+  }
+
+  .todos-container {
+    position: relative;
+    width: 327px;
+    max-height: max-content;
+    min-height: 50px;
+    left: 24px;
+    top: -30px;
+    border-radius: 5px;
+    overflow-y: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px hsl(233, 11%, 84%);
+  }
+
+  .items-left {
+    position: relative;
+    margin-right: 150px;
+    left: 20px;
+    top: 10px;
+    font-size: 12px;
+  }
+
+  .clear {
+    position: relative;
+    font-size: 12px;
+    top: 22px;
+    right: 20px;
+    margin-left: 150px;
+  }
+
+  .cont_All {
+    visibility: hidden;
+  }
+
+  .cont_active {
+    visibility: hidden;
+  }
+
+  .cont_completed {
+    visibility: hidden;
+  }
+
+  .drag-drop p {
+    position: relative;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: -0.194444px;
+    color: #9495A5;
+    margin-top: 30px;
+  }
+
+  .attribution {
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+
+  footer {
+    position: relative;
+    bottom: auto;
+    width: 100%;
+    top: 25px;
+  }
+
+  .all-completed {
+    position: relative;
+    width: 327px;
+    height: 48px;
+    background-color: #ffff;
+    border-radius: 5px;
+    left: 24px;
+    right: 24px;
+    font-size: 14px;
+    top: -13px;
+    box-shadow: 0 2px 4px 2px hsl(233, 11%, 84%);
+
+  }
+
+  .all {
+    position: relative;
+    left: 85px;
+    top: 15px;
+    color: hsl(220, 98%, 61%);
+    
+  }
+
+  .active {
+    position: relative;
+    left: 100px;
+    top: 15px;
+    color: #9495A5;
+  }
+
+  .completed {
+    position: relative;
+    left: 115px;
+    top: 15px;
+    color: #9495A5;
+  }
+
+  .circle {
+    left: 17px;
+  }
+
+  .icon-check, .icon-circle {
+    border-radius: 100%;
+  }
+
+
+
+  .dragging {
+    opacity: 1;
+  }
+
+
+
+
+
+
+
+}
 
 
 

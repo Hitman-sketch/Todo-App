@@ -93,10 +93,10 @@ function toggleListItem() {
   updateItemsLeft();
 }
 
-// Function to handle adding a new list item
-function addListItem() {
-  let inputText = document.getElementById('inputText');
-  let text = inputText.value.trim();
+function generateItem() {
+  let itemInput = document.getElementById('inputText');
+  let text = itemInput.value.trim();
+
   if (text !== '') {
     let todoList = document.getElementById('todoList');
     let listItem = document.createElement('li');
@@ -136,23 +136,50 @@ function addListItem() {
       this.classList.remove('hover');
     });
 
-    // Add event listeners for mobile view and Destop view drag and drop functionality
+    // Add event listeners for mobile view and Desktop view drag and drop functionality
     const listItemsMobile = document.querySelectorAll('#todoList li');
     listItemsMobile.forEach((item) => {
       item.addEventListener('dragstart', handleDragStart);
       item.addEventListener('dragover', handleDragOver);
       item.addEventListener('drop', handleDrop);
-      });
-
-    //Insert the new list item at the top of the list
-    todoList.insertBefore(listItem, todoList.firstChild);
-
+    });
     // Clear the input text
-    inputText.value = '';
+    itemInput.value = '';
 
     updateItemsLeft();
   }
 }
+// Add items to list using the ENTER KEY or CLICK ON CIRCLE ICON...
+function addListItem() {
+  const itemInput = document.getElementById('inputText');
+
+  function handleEnterKey(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      generateItem(itemInput.value.trim());
+      itemInput.value = '';
+    }
+  }
+
+  function handleCircleIconClick() {
+    if (itemInput.value.trim() !== '') {
+      generateItem(itemInput.value.trim());
+      itemInput.value = '';
+    }
+  }
+  // Event listener for Enter key press
+  itemInput.addEventListener('keydown', handleEnterKey);
+
+  // Event listener for click on the circle icon
+  const circleClick = document.getElementById('circleIcon');
+  circleClick.addEventListener('click', handleCircleIconClick);
+}
+
+// Call the addListItem function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+  addListItem();
+});
+
 
 // Variables to store references to the dragged item and the current drop target
 let draggedItem = null;
