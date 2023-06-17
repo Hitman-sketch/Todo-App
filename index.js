@@ -61,17 +61,35 @@ function toggleListItem(event) {
   const circleIcon = listItem.querySelector('.icon-circle');
   const todoText = listItem.querySelector('p');
   const isItemChecked = listItem.classList.contains('item-checked');
+  let crossIcon = listItem.querySelector('.icon-cross');
 
-  if (isItemChecked) {
-    // Remove the check icon
+
+  if (crossIcon) {
+    // Remove the cross icon if it already exists
+    listItem.removeChild(crossIcon);
     listItem.classList.remove('item-checked');
     circleIcon.classList.remove('icon-check');
     todoText.style.textDecoration = 'none';
+    
   } else {
-    // Add the check icon
+    // Add the check icon and remove the cross icon
     listItem.classList.add('item-checked');
     circleIcon.classList.add('icon-check');
     todoText.style.textDecoration = 'line-through';
+  if (!crossIcon) {
+    // Create and append the cross icon if it doesn't exist
+    crossIcon = document.createElement('img');
+    crossIcon.setAttribute('src', './images/icon-cross.svg');
+    crossIcon.setAttribute('alt', 'Cross');
+    crossIcon.classList.add('icon-cross');
+    listItem.appendChild(crossIcon);
+
+    // Click event listener to the cross icon removes the item from the list when the cross icon is clicked
+    crossIcon.addEventListener('click', function () {
+      listItem.remove();
+      updateItemsLeft();
+    });
+  }
   }
 
   updateItemsLeft();
@@ -85,22 +103,41 @@ function toggleCircleIcon(event) {
     const listItem = circleIcon.parentNode;
     const todoText = listItem.querySelector('p');
     const isItemChecked = listItem.classList.contains('item-checked');
+    let crossIcon = listItem.querySelector('.icon-cross');
 
-    if (isItemChecked) {
-      // Remove the check icon
+    if (crossIcon) {
+      // Remove the cross icon if it already exists
+      listItem.removeChild(crossIcon);
       listItem.classList.remove('item-checked');
       circleIcon.classList.remove('icon-check');
       todoText.style.textDecoration = 'none';
+
     } else {
-      // Add the check icon
+      // Add the check icon and add the cross icon
       listItem.classList.add('item-checked');
       circleIcon.classList.add('icon-check');
       todoText.style.textDecoration = 'line-through';
+
+      if (!crossIcon) {
+        // Create and append the cross icon if it doesn't exist
+        crossIcon = document.createElement('img');
+        crossIcon.setAttribute('src', './images/icon-cross.svg');
+        crossIcon.setAttribute('alt', 'Cross');
+        crossIcon.classList.add('icon-cross');
+        listItem.appendChild(crossIcon);
+
+        // Click event listener to the cross icon removes the item from the list when the cross icon is clicked
+        crossIcon.addEventListener('click', function () {
+          listItem.remove();
+          updateItemsLeft();
+        });
+      }
     }
 
     updateItemsLeft();
   }
 }
+
 
 
 
@@ -153,10 +190,6 @@ function generateItem() {
     circleSpan.addEventListener('click', toggleCircleIcon);
     listItem.addEventListener('click', toggleListItem);
 
-    
-
-
-
     // Add event listeners for mobile view and Desktop view drag and drop functionality
     const listItemsMobile = document.querySelectorAll('#todoList li');
     listItemsMobile.forEach((item) => {
@@ -187,8 +220,8 @@ function addListItem() {
       generateItem(itemInput.value.trim());
       itemInput.value = '';
     }
-    
   }
+
   // Event listener for Enter key press
   itemInput.addEventListener('keydown', handleEnterKey);
 
@@ -197,13 +230,10 @@ function addListItem() {
   circleClick.addEventListener('click', handleCircleIconClick);
 }
 
-
-
 // Call the addListItem function when the DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
   addListItem();
 });
-
 
 // Variables to store references to the dragged item and the current drop target
 let draggedItem = null;
