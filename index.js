@@ -54,7 +54,7 @@ function toggle_icon() {
   }
 
 }
-//-------------------------------------------------------
+//------------Toggle functionality for both list item and circle icon-------------------------------------------
 function toggleListItem(event) {
   event.stopPropagation();
   const listItem = event.target.closest('li');
