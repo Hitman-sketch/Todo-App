@@ -91,11 +91,10 @@ header {
   font-weight: 400;
   font-size: 18px;
   line-height: 18px;
-  /* identical to box height */
   letter-spacing: -0.194444px;
   color: hsl(235, 7%, 64%);
   opacity: 0.5;
-  
+  top: 40px;
 }
 
 /*styled the text been typed in the input box*/
@@ -231,7 +230,7 @@ header {
 .cont_All {
   position: relative;
   left: 170px;
-  top: -5px;
+  top: -7px;
   font-size: 14px;
   margin-right: 510px;
 }
@@ -240,7 +239,7 @@ header {
 .cont_active {
   position: relative;
   left: 210px;
-  top: -20px;
+  top: -24px;
   font-size: 14px;
   margin-right: 480px;
 }
@@ -250,34 +249,31 @@ header {
 .cont_completed {
   position: relative;
   left: 270px;
-  top: -20px;
+  top: -24px;
   font-size: 14px;
   margin-right: 450px;
   margin-top: -15px;
 }
 
+/*
+.cont_All, .cont_active, .cont_completed, .clear {
+  color: #9495A5;
+}*/
+
+/*-----------------------------*/
 .cont_All, .cont_active, .cont_completed, .clear {
   color: #9495A5;
 }
-
-.cont_All:hover, .cont_active:hover, .cont_completed:hover, .clear:hover {
-  color: #ffff;
+/* --------------------------- */
+.filter {
   cursor: pointer;
 }
 
-.filter {
-  /* Add your default styling for filters here */
-  color: #ffffff;
-}
-
-.filter .active {
-  color: blue;
-  /* Add any additional styling for active filters here */
+.filter.active {
+  color: rgb(38, 38, 245);
 }
 
 
-
-/* --------------------------- */
 .align {
   display: flex;
   align-items: center;
@@ -417,17 +413,17 @@ body:not(.dark_mode) header {
     font-size: 30px;
     line-height: 30px;
     letter-spacing: 10px;
-    margin-right: 92%;
-    top: 130px;
+    margin-right: 50px;
+    top: 97px;
     left: 20px;
   }
 
   .brand-icon img {
     margin-left: 300px;
-    position: absolute;
+    position: relative;
     height: 20px;
     width: 20px;
-    top: 130px;
+    top: 80px;
     left: 20px;
   }
 
@@ -488,13 +484,13 @@ body:not(.dark_mode) header {
   
 
   .drag-drop p {
-    position: absolute;
+    position: relative;
     font-size: 14px;
     text-align: center;
     letter-spacing: -0.194444px;
     color: #9495A5;
-    bottom: 40px;
-    left: 85px;
+    bottom: -35px;
+    left: 5px;
   }
 
   .attribution {
@@ -502,7 +498,7 @@ body:not(.dark_mode) header {
     font-size: 11px;
     text-align: center;
     left: 35px;
-    top: 20px;
+    top: 30px;
   }
 
   .all-completed {
@@ -516,42 +512,44 @@ body:not(.dark_mode) header {
     font-size: 14px;
     top: -13px;
     box-shadow: 0 2px 4px 2px hsl(233, 11%, 84%);
+    color: #88888a;
 
   }
 
   .clear {
     position: relative;
     font-size: 12px;
-    top: 22px;
+    top: 24px;
     right: 20px;
     margin-left: 150px;
   }
 
-  .all {
+  #all {
     position: relative;
     left: 85px;
     top: 15px;
   }
 
-  .active {
+  #active {
     position: relative;
     left: 100px;
     top: 15px;
   }
 
-  .completed {
+  #completed {
     position: relative;
     left: 115px;
     top: 15px;
   }
 
-  .all, .active, .completed, .clear  {
+  #all, #active, #completed, .clear  {
     cursor: pointer;
-    color: #9495A5;
   }
 
-  .all:hover, .active:hover, .completed:hover, .clear:hover {
-    color: #ffff;
+
+
+  #all:hover, #active:hover, #completed:hover, .clear:hover {
+    color: #8a8a8a;
   }
 
   .circle {
@@ -663,14 +661,14 @@ body:not(.dark_mode) header {
     top: 10px;
     font-size: 14px;
     left: 30px;
-    margin-right: 420px;
+    margin-right: 400px;
     color: #9495A5;
   }
   /*---clear completed---*/
   .clear {
     position: relative;
     text-align: right;
-    top: 25px;
+    top: 24.5px;
     right: 20px;
     font-size: 14px;
     margin-left: 370px;
@@ -680,8 +678,9 @@ body:not(.dark_mode) header {
     color: #9495A5;
   }
 
+ 
   .cont_All:hover, .cont_active:hover, .cont_completed:hover, .clear:hover {
-    color: #ffff;
+    color: #a4a5a7;
     cursor: pointer;
   }
 

@@ -26,6 +26,27 @@ document.addEventListener("DOMContentLoaded", function() {
   toggleImg.addEventListener("click", toggle_icon);
 });
 
+// Function to handle filter click
+function handleFilterClick(event) {
+  // Remove the active class from all filter elements
+  const filterElements = document.querySelectorAll('.filter');
+  filterElements.forEach((filter) => {
+    filter.classList.remove('active');
+  });
+
+  // Add the active class to the clicked filter label
+  const clickedFilter = event.target.closest('label');
+  clickedFilter.classList.add('active');
+}
+
+// Add click event listener to each filter element
+const filterElements = document.querySelectorAll('.filter');
+filterElements.forEach((filter) => {
+  filter.addEventListener('click', handleFilterClick);
+});
+
+
+
 //------------Toggle functionality for both list item and circle icon-----------------
 function toggleListItem(event) {
   event.stopPropagation();
@@ -283,32 +304,28 @@ function handleDrop(event) {
 document.addEventListener('DOMContentLoaded', function () {
   let circleIcon = document.getElementById('circleIcon');
   circleIcon.addEventListener('click', addListItem);
-  
 
   // ...mobile view all, active, completed labels functionality
-  
-  let allLabel1 = document.querySelector('.all');
+  let allLabel1 = document.querySelector('#mobile-filter .filter:nth-child(1)');
   allLabel1.addEventListener('click', showAllTodos);
 
-  let activeLabel1 = document.querySelector('.active');
+  let activeLabel1 = document.querySelector('#mobile-filter .filter:nth-child(2)');
   activeLabel1.addEventListener('click', showActiveTodos);
 
-  let completedLabel1 = document.querySelector('.completed');
+  let completedLabel1 = document.querySelector('#mobile-filter .filter:nth-child(3)');
   completedLabel1.addEventListener('click', showCompletedTodos);
 
   // ........Desktop view all, active, completed functionality...............
-
-
-  let allLabel = document.querySelector('.cont_All');
+  let allLabel = document.querySelector('#desktop-filter .cont_All label');
   allLabel.addEventListener('click', showAllTodos);
 
-  let completedLabel = document.querySelector('.cont_completed');
+  let completedLabel = document.querySelector('#desktop-filter .cont_completed label');
   completedLabel.addEventListener('click', showCompletedTodos);
 
-  let activeLabel = document.querySelector('.cont_active');
+  let activeLabel = document.querySelector('#desktop-filter .cont_active label');
   activeLabel.addEventListener('click', showActiveTodos);
 
-  let clearCompletedLabel = document.querySelector('.clear');
+  let clearCompletedLabel = document.querySelector('#desktop-filter .clear label');
   clearCompletedLabel.addEventListener('click', clearCompletedTodos);
 
   function showAllTodos() {
@@ -352,17 +369,21 @@ document.addEventListener('DOMContentLoaded', function () {
     completedTodos.forEach((completedTodo) => {
       let listItem = completedTodo.parentNode;
       let todoText = listItem.querySelector('p');
-      if (completedTodo.classList.contains('icon-check') && todoText.style.textDecoration === 'line-through') {
+      if (
+        completedTodo.classList.contains('icon-check') &&
+        todoText.style.textDecoration === 'line-through'
+      ) {
         listItem.remove();
       }
     });
     updateItemsLeft();
     saveItems();
   }
-  
+
   // Initial update of items left count
   updateItemsLeft();
 });
+
 
 // Function to update the items left count
 function updateItemsLeft() {
