@@ -1,76 +1,44 @@
-function toggle_icon() {
-  // Get the required elements
-  let imageElement = document.getElementById("Img");
-  let bodyElement = document.body;
-  let headerElement = document.querySelector('header');
-  let todosContainerElement = document.querySelector('.todos-container');
-  let listItemsElements = document.querySelectorAll('.list li');
-  let circleIconsElements = document.querySelectorAll('.circle');
-  let recordElement = document.querySelector('.record');
-  let itemsLeftLabelElement = document.querySelector('.items-left label');
-  let clearLabelElement = document.querySelector('.clear label');
-  let dragDropParagraphElement = document.querySelector('.drag-drop p');
-  
-  if (imageElement.src.endsWith("icon-moon.svg")) {
-    // Switch to dark mode
-    imageElement.src = "./images/icon-sun.svg";
-    bodyElement.classList.add("dark_mode");
-    headerElement.classList.add('dark_mode');
-    todosContainerElement.classList.add('dark_mode');
-    recordElement.classList.add('dark_mode');
-    itemsLeftLabelElement.classList.add('dark_mode');
-    clearLabelElement.classList.add('dark_mode');
-    dragDropParagraphElement.classList.add('dark_mode');
+document.addEventListener("DOMContentLoaded", function() {
+  const setTheme = document.body;
+  let theme = localStorage.getItem("PageTheme");
 
-    // Added dark mode class to list items
-    listItemsElements.forEach(function (item) {
-      item.classList.add('dark_mode');
-    });
-
-    // Added dark mode class to circle icons
-    circleIconsElements.forEach(function (icon) {
-      icon.classList.add('dark_mode');
-    });
-
-  } else {
-    // Switch to light mode
-    imageElement.src = "./images/icon-moon.svg";
-    bodyElement.classList.remove("dark_mode");
-    headerElement.classList.remove('dark_mode');
-    todosContainerElement.classList.remove('dark_mode');
-    itemsLeftLabelElement.classList.remove('dark_mode');
-    clearLabelElement.classList.remove('dark_mode');
-    dragDropParagraphElement.classList.remove('dark_mode');
-
-    // Removed dark mode class from list items
-    listItemsElements.forEach(function (item) {
-      item.classList.remove('dark_mode');
-    });
-
-    // Removed dark mode class from circle icons
-    circleIconsElements.forEach(function (icon) {
-      icon.classList.remove('dark_mode');
-    });
+  if (theme === "DARK") {
+    setTheme.classList.add("dark_mode");
   }
 
-}
-//------------Toggle functionality for both list item and circle icon-------------------------------------------
+  function toggle_icon() {
+    setTheme.classList.toggle("dark_mode");
+
+    if (setTheme.classList.contains("dark_mode")) {
+      theme = "DARK";
+      console.log("Dark mode");
+    } else {
+      theme = "LIGHT";
+      console.log("Light mode");
+    }
+
+    // Save to localStorage
+    localStorage.setItem("PageTheme", theme);
+  }
+
+  // Attach event listener to the toggle button
+  const toggleImg = document.getElementById("Img");
+  toggleImg.addEventListener("click", toggle_icon);
+});
+
+//------------Toggle functionality for both list item and circle icon-----------------
 function toggleListItem(event) {
   event.stopPropagation();
   const listItem = event.target.closest('li');
   const circleIcon = listItem.querySelector('.icon-circle');
   const todoText = listItem.querySelector('p');
-  const isItemChecked = listItem.classList.contains('item-checked');
   let crossIcon = listItem.querySelector('.icon-cross');
-
-
   if (crossIcon) {
     // Remove the cross icon if it already exists
     listItem.removeChild(crossIcon);
     listItem.classList.remove('item-checked');
     circleIcon.classList.remove('icon-check');
     todoText.style.textDecoration = 'none';
-    
   } else {
     // Add the check icon and remove the cross icon
     listItem.classList.add('item-checked');
@@ -93,6 +61,7 @@ function toggleListItem(event) {
   }
 
   updateItemsLeft();
+  saveItems();
 }
 
 
@@ -102,16 +71,13 @@ function toggleCircleIcon(event) {
   if (circleIcon) {
     const listItem = circleIcon.parentNode;
     const todoText = listItem.querySelector('p');
-    const isItemChecked = listItem.classList.contains('item-checked');
     let crossIcon = listItem.querySelector('.icon-cross');
-
     if (crossIcon) {
       // Remove the cross icon if it already exists
       listItem.removeChild(crossIcon);
       listItem.classList.remove('item-checked');
       circleIcon.classList.remove('icon-check');
       todoText.style.textDecoration = 'none';
-
     } else {
       // Add the check icon and add the cross icon
       listItem.classList.add('item-checked');
@@ -133,76 +99,108 @@ function toggleCircleIcon(event) {
         });
       }
     }
-
     updateItemsLeft();
   }
+  saveItems();
+}
+
+// Function to save the items to localStorage
+function saveItems() {
+  const todoList = document.getElementById('todoList');
+  const items = Array.from(todoList.children).map((item) => ({
+    description: item.querySelector('p').textContent,
+    completed: item.classList.contains('item-checked'),
+  }));
+  localStorage.setItem('todoItems', JSON.stringify(items));
+}
+
+// Function to restore the items from localStorage
+function restoreItems() {
+  const savedItems = localStorage.getItem('todoItems');
+  if (savedItems) {
+    const items = JSON.parse(savedItems);
+    items.forEach((item) => {
+      generateItem(item.description, item.completed);
+    });
+  }
+  updateItemsLeft();
+}
+
+// Function to generate a list item
+function generateItem(description, completed) {
+  // Create the list item
+  const listItem = document.createElement('li');
+  listItem.draggable = true;
+
+  // Create the todo text element and append it to the list item
+  const todoText = document.createElement('p');
+  todoText.textContent = description;
+  listItem.appendChild(todoText);
+
+  // Create the circle icon and append it to the list item
+  const circleSpan = document.createElement('span');
+  circleSpan.classList.add('icon-circle');
+  circleSpan.classList.add('align');
+  const circleIcon = document.createElement('img');
+  circleIcon.setAttribute('src', './images/icon-circle.svg');
+  circleIcon.setAttribute('alt', 'circle');
+  circleSpan.appendChild(circleIcon);
+  listItem.appendChild(circleSpan);
+
+   // Create the cross icon and append it to the list item
+   const crossSpan = document.createElement('span');
+   crossSpan.classList.add('icon-cross');
+   crossSpan.classList.add('align');
+   const crossIcon = document.createElement('img');
+   crossIcon.setAttribute('src', './images/icon-cross.svg');
+   crossIcon.setAttribute('alt', 'cross');
+   crossIcon.classList.add('icon-cross');
+   crossSpan.appendChild(crossIcon);
+   listItem.appendChild(crossSpan);
+
+    // Add click event listener to the cross icon
+  crossIcon.addEventListener('click', function () {
+    listItem.remove();
+  });
+ 
+   // Hide the cross icon initially
+   crossSpan.style.display = 'none';
+ 
+   // Add event listeners to show/hide the cross icon on hover
+   listItem.addEventListener('mouseenter', function () {
+     crossSpan.style.display = 'inline-block';
+   });
+   listItem.addEventListener('mouseleave', function () {
+     crossSpan.style.display = 'none';
+   });
+
+  // Add the event listeners to the circle icon for hover and click events
+  circleSpan.addEventListener('mouseover', function () {
+    this.classList.add('hover');
+  });
+  circleSpan.addEventListener('mouseout', function () {
+    this.classList.remove('hover');
+  });
+
+  // Add the event listener to the list item and circle icon for click event
+  listItem.addEventListener('click', toggleListItem);
+  circleSpan.addEventListener('click', toggleCircleIcon);
+
+  // Add event listeners for mobile view and Desktop view drag and drop functionality
+  listItem.addEventListener('dragstart', handleDragStart);
+  listItem.addEventListener('dragover', handleDragOver);
+  listItem.addEventListener('drop', handleDrop);
+
+  // Append the list item to the todo list container
+  const todoList = document.getElementById('todoList');
+  todoList.appendChild(listItem);
+
+  // Save the items to localStorage
+  saveItems();
+  updateItemsLeft();
 }
 
 
-
-
-
-
-function generateItem() {
-  let itemInput = document.getElementById('inputText');
-  let text = itemInput.value.trim();
-
-  if (text !== '') {
-    let todoList = document.getElementById('todoList');
-    let listItem = document.createElement('li');
-
-    // Make the list item draggable
-    listItem.draggable = true;
-
-    // Create todo text element and append it to the list item
-    let todoText = document.createElement('p');
-    todoText.textContent = text;
-    listItem.appendChild(todoText);
-
-    // Create circle icon and append it to the list item
-    let circleSpan = document.createElement('span');
-    circleSpan.classList.add('icon-circle');
-    circleSpan.classList.add('align');
-    let circleIcon = document.createElement('img');
-    circleIcon.setAttribute('src', './images/icon-circle.svg');
-    circleIcon.setAttribute('alt', 'circle');
-    circleSpan.appendChild(circleIcon);
-    listItem.appendChild(circleSpan);
-
-    // Check if there is a first item in the list
-    let firstItem = todoList.firstChild;
-    if (firstItem) {
-      todoList.insertBefore(listItem, firstItem);
-    } else {
-      todoList.appendChild(listItem);
-    }
-
-    // Add the event listener to the new circle icons hover and click events
-  
-    circleSpan.addEventListener('mouseover', function () {
-      this.classList.add('hover');
-    });
-    circleSpan.addEventListener('mouseout', function () {
-      this.classList.remove('hover');
-    });
-
-      // Add the event listener to the new circle icons click events
-    circleSpan.addEventListener('click', toggleCircleIcon);
-    listItem.addEventListener('click', toggleListItem);
-
-    // Add event listeners for mobile view and Desktop view drag and drop functionality
-    const listItemsMobile = document.querySelectorAll('#todoList li');
-    listItemsMobile.forEach((item) => {
-      item.addEventListener('dragstart', handleDragStart);
-      item.addEventListener('dragover', handleDragOver);
-      item.addEventListener('drop', handleDrop);
-    });
-    // Clear the input text
-    itemInput.value = '';
-
-    updateItemsLeft();
-  }
-}
 // Add items to list using the ENTER KEY or CLICK ON CIRCLE ICON...
 function addListItem() {
   const itemInput = document.getElementById('inputText');
@@ -210,8 +208,10 @@ function addListItem() {
   function handleEnterKey(event) {
     if (event.key === 'Enter') {
       event.preventDefault();
-      generateItem(itemInput.value.trim());
-      itemInput.value = '';
+      if (itemInput.value.trim() !== '') {
+        generateItem(itemInput.value.trim());
+        itemInput.value = '';
+      }
     }
   }
 
@@ -230,10 +230,12 @@ function addListItem() {
   circleClick.addEventListener('click', handleCircleIconClick);
 }
 
-// Call the addListItem function when the DOM is loaded
+// Call the addListItem function and restoreItems function when the DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
   addListItem();
+  restoreItems();
 });
+
 
 // Variables to store references to the dragged item and the current drop target
 let draggedItem = null;
@@ -281,6 +283,7 @@ function handleDrop(event) {
 document.addEventListener('DOMContentLoaded', function () {
   let circleIcon = document.getElementById('circleIcon');
   circleIcon.addEventListener('click', addListItem);
+  
 
   // ...mobile view all, active, completed labels functionality
   
@@ -354,6 +357,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
     updateItemsLeft();
+    saveItems();
   }
   
   // Initial update of items left count
@@ -368,3 +372,4 @@ function updateItemsLeft() {
   let itemsLeftLabel = document.querySelector('.items-left');
   itemsLeftLabel.textContent = `${itemsLeft} ${itemsLeft === 1 ? 'item' : 'items'} left`;
 }
+

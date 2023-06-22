@@ -51,6 +51,7 @@ header {
   letter-spacing: 15px;
   color: hsl(0, 0%, 100%);
   margin-right: 10px;
+  margin-top: 10px;
     
 }
 
@@ -68,9 +69,9 @@ header {
 .quary {
   background-color: hsl(0, 0%, 100%);
   position: absolute;
-  width: 530px;
+  width: 533px;
   height: 64px;
-  left: 420px;
+  left: 418px;
   top: 158px;
   border-radius: 5px;
 }
@@ -121,8 +122,6 @@ header {
 }
 
 .circle {
-  width: 23px;
-  height: 23px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -149,7 +148,7 @@ header {
 
 
 .hover {
-  border: 2px solid hsl(220, 98%, 61%);
+  border: 2px solid hsl(202, 82%, 56%);
   border-radius: 100%;
   width : 22px;
   height: 22px;
@@ -159,10 +158,7 @@ header {
   display: block;
   left: 2%;
 }
-
 /*-----------------------------*/
-
-
 /* Styling for the cross icon */
 .icon-cross {
   width: 12px;
@@ -181,16 +177,13 @@ header {
 .todos-container {
   background-color: hsl(0, 0%, 100%);
   width: 533px;
-  max-height: 300px;
+  max-height: 250px;
   position: relative;
   left: 419px;
   top: -50px;
   border-radius: 5px ;
   box-shadow: 0 5px 10px 5px hsl(236, 9%, 61%);
-  
   overflow-x: hidden;
-  
-  
 }
 
 .list {
@@ -220,7 +213,7 @@ header {
   top: 10px;
   font-size: 14px;
   left: 30px;
-  margin-right: 450px;
+  margin-right: 410px;
   color: #9495A5;
 }
 
@@ -229,21 +222,10 @@ header {
   position: relative;
   text-align: right;
   top: 25px;
-  right: 10px;
+  right: 20px;
   font-size: 14px;
-  margin-left: 410px;
-  color: #9495A5;
-  cursor: pointer;
+  margin-left: 380px;
 }
-
-.clear a {
-  text-decoration: none;
-  color: #9495A5;
-}
-.clear a:hover {
-  color: #5c5a5a;
-}
-/*-----------------------*/
 
 /*-------All--------*/
 .cont_All {
@@ -252,16 +234,7 @@ header {
   top: -5px;
   font-size: 14px;
   margin-right: 510px;
-  cursor: pointer;
 }
-.cont_All a {
-  text-decoration: none;
-  color: #3A7CFD;
-}
-.cont_All a:hover {
-  color: #5c5a5a;
-}
-/*---------------------*/
 
 /*--------active-------------*/
 .cont_active {
@@ -271,14 +244,7 @@ header {
   font-size: 14px;
   margin-right: 480px;
 }
-.cont_active a {
-  text-decoration: none;
-  color: #9495A5;
-}
-.cont_active a:hover {
-  color: #5c5a5a;
-}
-/*---------------------*/
+
 
 /*--------completed-------------*/
 .cont_completed {
@@ -288,40 +254,53 @@ header {
   font-size: 14px;
   margin-right: 450px;
   margin-top: -15px;
+}
+
+.cont_All, .cont_active, .cont_completed, .clear {
   color: #9495A5;
 }
 
-
-.cont_completed a {
-  text-decoration: none;
-  color: #9495A5;
+.cont_All:hover, .cont_active:hover, .cont_completed:hover, .clear:hover {
+  color: #ffff;
+  cursor: pointer;
 }
 
-.cont_completed a:hover {
-  color: #5c5a5a;
+.filter {
+  /* Add your default styling for filters here */
+  color: #ffffff;
 }
+
+.filter .active {
+  color: blue;
+  /* Add any additional styling for active filters here */
+}
+
+
 
 /* --------------------------- */
-
 .align {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/*###################################*/
+/*------------------------------*/
 
 .drag-drop p{
+  position: absolute;
   font-size: 14px;
   text-align: center;
   letter-spacing: -0.194444px;
   color: #9495A5;
   margin-top: -20px;
+  left: 570px;
 }
 
 .attribution {
+  position: absolute;
   font-size: 11px; 
   text-align: center; 
+  left: 520px;
 }
 
 .attribution a { 
@@ -393,15 +372,6 @@ body:not(.dark_mode) header {
   filter: none;
 }
 
-
-.dark_mode .items-left label {
-  color: #5B5E7E;
-}
-
-.dark_mode .clear label {
-  color: #5B5E7E;
-}
-
 .dark_mode .drag-drop p {
   color: #6b6969;
 }
@@ -459,9 +429,6 @@ body:not(.dark_mode) header {
     width: 20px;
     top: 130px;
     left: 20px;
-
-    
-    
   }
 
   .quary {
@@ -472,7 +439,6 @@ body:not(.dark_mode) header {
     top: 78px;
     border-radius: 5px;
     background-color: #fff;
-
   }
 
   .center-input {
@@ -491,12 +457,11 @@ body:not(.dark_mode) header {
   .todos-container {
     position: relative;
     width: 327px;
-    max-height: max-content;
+    max-height: 240px;
     min-height: 50px;
     left: 24px;
     top: -30px;
     border-radius: 5px;
-    overflow-y: hidden;
     background-color: #fff;
     box-shadow: 0 2px 4px 2px hsl(233, 11%, 84%);
   }
@@ -507,14 +472,6 @@ body:not(.dark_mode) header {
     left: 20px;
     top: 10px;
     font-size: 12px;
-  }
-
-  .clear {
-    position: relative;
-    font-size: 12px;
-    top: 22px;
-    right: 20px;
-    margin-left: 150px;
   }
 
   .cont_All {
@@ -531,28 +488,21 @@ body:not(.dark_mode) header {
   
 
   .drag-drop p {
-    position: relative;
+    position: absolute;
     font-size: 14px;
     text-align: center;
     letter-spacing: -0.194444px;
     color: #9495A5;
-    margin-top: 30px;
+    bottom: 40px;
+    left: 85px;
   }
 
   .attribution {
+    position: absolute;
     font-size: 11px;
     text-align: center;
-  }
-
-  .attribution a {
-    color: hsl(228, 45%, 44%);
-  }
-
-  footer {
-    position: relative;
-    bottom: auto;
-    width: 100%;
-    top: 25px;
+    left: 35px;
+    top: 20px;
   }
 
   .all-completed {
@@ -569,27 +519,41 @@ body:not(.dark_mode) header {
 
   }
 
+  .clear {
+    position: relative;
+    font-size: 12px;
+    top: 22px;
+    right: 20px;
+    margin-left: 150px;
+  }
+
   .all {
     position: relative;
     left: 85px;
     top: 15px;
-    color: hsl(220, 98%, 61%);
-    
   }
 
   .active {
     position: relative;
     left: 100px;
     top: 15px;
-    color: #9495A5;
   }
 
   .completed {
     position: relative;
     left: 115px;
     top: 15px;
+  }
+
+  .all, .active, .completed, .clear  {
+    cursor: pointer;
     color: #9495A5;
   }
+
+  .all:hover, .active:hover, .completed:hover, .clear:hover {
+    color: #ffff;
+  }
+
   .circle {
     left: 17px;
   }
@@ -605,7 +569,6 @@ body:not(.dark_mode) header {
   .dragover {
     border-style: none;
   }
-  
 }
 /*-----------mobile mode end--------------*/
 
@@ -621,193 +584,124 @@ body:not(.dark_mode) header {
 /*----Desktop mode end----*/
 
 
-
-/* tablet mode*/
+/* tablet mode start*/
 @media (min-width: 768px) and (max-width: 1024px) {
-  .all-completed {
-    display: none;
-  }
 
-
+    /*This container contains the positioning of the icon and the and some of the todo text*/
   .brand-icon {
-    width: 100%;
-    height: 100%;
-    left: 10px;
-    top: 10px;
-    padding: 0;
-    margin: 0;
-  }
-
-  .brand-icon h1 {
-    position: relative;
-    height: 20px;
-    width: 109px;
-    font-size: 30px;
-    line-height: 30px;
-    letter-spacing: 10px;
-    margin-right: 92%;
-    top: 130px;
-    left: 20px;
-  }
-
-  .brand-icon img {
-    margin-left: 300px;
+    padding: 25px;
     position: absolute;
-    height: 20px;
-    width: 20px;
-    top: 130px;
-    left: 20px;
-
-    
-    
-  }
-
-  .quary {
-    position: relative;
-    width: 327px;
+    width: 541px;
     height: 48px;
-    left: 0;
-    top: 78px;
-    border-radius: 5px;
-    background-color: #fff;
-
+    left: 10px;
+    top: 45px;
+  }
+    
+  /*Todo font tweaks*/
+  .brand-icon h1 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 40px;
+    letter-spacing: 15px;
+    color: hsl(0, 0%, 100%);
+    margin-right: 10px; 
   }
 
+  /*moon icon positioning*/
+  .brand-icon img {
+    margin-left: 650px;
+    position: absolute;
+    top: 35px;
+    bottom: 0px;
+    font-size: 35px;
+  }
+  /*This is the container that contains the input and it a long rectangualr box that fills up the input*/
+  .quary {
+    background-color: hsl(0, 0%, 100%);
+    position: relati;
+    width: 500px;
+    height: 64px;
+    left: 220px;
+    top: 158px;
+    border-radius: 5px;
+  }
+  /*Positioning the input*/
   .center-input {
-    width: 50%;
-    height: 100%;
-    padding-right: 0;
-    margin-left: -40px;
+    text-align: left;
+    width: 350px;
+    height: 64px;
+    padding-right: 70px;
+    margin-left: 59px;
     border: none;
-    background-color: #fff;
+    outline: none;
   }
 
-  .icon-circle {
-    left: 17px;
+  .hover {
+    border: 2px solid hsl(194, 98%, 61%);
+    border-radius: 100%;
+    width : 22px;
+    height: 22px;
   }
 
+  /*This is the container that contains the input and it a long rectangualr box that fills up the input*/
   .todos-container {
+    background-color: hsl(0, 0%, 100%);
+    width: 500px;
+    max-height: 250px;
     position: relative;
-    width: 327px;
-    max-height: max-content;
-    min-height: 50px;
-    left: 24px;
-    top: -30px;
-    border-radius: 5px;
-    overflow-y: hidden;
-    background-color: #fff;
-    box-shadow: 0 2px 4px 2px hsl(233, 11%, 84%);
+    left: 220px;
+    top: -50px;
+    border-radius: 5px ;
+    box-shadow: 0 5px 10px 5px hsl(236, 9%, 61%);
+    overflow-x: hidden;
   }
 
   .items-left {
     position: relative;
-    margin-right: 150px;
-    left: 20px;
+    text-align: left;
     top: 10px;
-    font-size: 12px;
+    font-size: 14px;
+    left: 30px;
+    margin-right: 420px;
+    color: #9495A5;
   }
-
+  /*---clear completed---*/
   .clear {
     position: relative;
-    font-size: 12px;
-    top: 22px;
+    text-align: right;
+    top: 25px;
     right: 20px;
-    margin-left: 150px;
+    font-size: 14px;
+    margin-left: 370px;
   }
 
-  .cont_All {
-    visibility: hidden;
+  .cont_All, .cont_active, .cont_completed, .clear {
+    color: #9495A5;
   }
 
-  .cont_active {
-    visibility: hidden;
+  .cont_All:hover, .cont_active:hover, .cont_completed:hover, .clear:hover {
+    color: #ffff;
+    cursor: pointer;
   }
 
-  .cont_completed {
-    visibility: hidden;
-  }
-
-  .drag-drop p {
-    position: relative;
+  /*------------------------------*/
+  .drag-drop p{
+    position: absolute;
     font-size: 14px;
     text-align: center;
     letter-spacing: -0.194444px;
     color: #9495A5;
-    margin-top: 30px;
+    margin-top: -20px;
+    left: 380px;
   }
 
   .attribution {
-    font-size: 11px;
-    text-align: center;
+    font-size: 11px; 
+    text-align: center; 
+    position: absolute;
+    left: 340px;
   }
-
-  .attribution a {
-    color: hsl(228, 45%, 44%);
-  }
-
-  footer {
-    position: relative;
-    bottom: auto;
-    width: 100%;
-    top: 25px;
-  }
-
-  .all-completed {
-    position: relative;
-    width: 327px;
-    height: 48px;
-    background-color: #ffff;
-    border-radius: 5px;
-    left: 24px;
-    right: 24px;
-    font-size: 14px;
-    top: -13px;
-    box-shadow: 0 2px 4px 2px hsl(233, 11%, 84%);
-
-  }
-
-  .all {
-    position: relative;
-    left: 85px;
-    top: 15px;
-    color: hsl(220, 98%, 61%);
-    
-  }
-
-  .active {
-    position: relative;
-    left: 100px;
-    top: 15px;
-    color: #9495A5;
-  }
-
-  .completed {
-    position: relative;
-    left: 115px;
-    top: 15px;
-    color: #9495A5;
-  }
-
-  .circle {
-    left: 17px;
-  }
-
-  .icon-check, .icon-circle {
-    border-radius: 100%;
-  }
-
-
-
-  .dragging {
-    opacity: 1;
-  }
-
-
-
-
-
-
-
 }
 
 
