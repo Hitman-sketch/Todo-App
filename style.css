@@ -230,7 +230,7 @@ header {
 .cont_All {
   position: relative;
   left: 170px;
-  top: -7px;
+  top: -5px;
   font-size: 14px;
   margin-right: 510px;
 }
@@ -239,7 +239,7 @@ header {
 .cont_active {
   position: relative;
   left: 210px;
-  top: -24px;
+  top: -20px;
   font-size: 14px;
   margin-right: 480px;
 }
@@ -249,7 +249,7 @@ header {
 .cont_completed {
   position: relative;
   left: 270px;
-  top: -24px;
+  top: -20px;
   font-size: 14px;
   margin-right: 450px;
   margin-top: -15px;
@@ -546,10 +546,8 @@ body:not(.dark_mode) header {
     cursor: pointer;
   }
 
-
-
   #all:hover, #active:hover, #completed:hover, .clear:hover {
-    color: #8a8a8a;
+    color: #ebebeb;
   }
 
   .circle {
@@ -678,9 +676,33 @@ body:not(.dark_mode) header {
     color: #9495A5;
   }
 
- 
+  .cont_All {
+    position: relative;
+    left: 150px;
+    top: -3px;
+    font-size: 14px;
+    margin-right: 510px;
+  }
+
+  .cont_active {
+    position: relative;
+    left: 190px;
+    top: -19px;
+    font-size: 14px;
+    margin-right: 480px;
+  }
+
+  .cont_completed {
+    position: relative;
+    left: 250px;
+    top: -19px;
+    font-size: 14px;
+    margin-right: 450px;
+    margin-top: -15px;
+  }
+
   .cont_All:hover, .cont_active:hover, .cont_completed:hover, .clear:hover {
-    color: #a4a5a7;
+    color: #dcdddd;
     cursor: pointer;
   }
 
