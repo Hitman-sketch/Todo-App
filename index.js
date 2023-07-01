@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
   const setTheme = document.body;
   let theme = localStorage.getItem("PageTheme");
+  const toggleImg = document.getElementById("Img");
 
   if (theme === "DARK") {
     setTheme.classList.add("dark_mode");
+    toggleImg.src = "./images/icon-sun.svg";
   }
 
   function toggle_icon() {
@@ -12,9 +14,11 @@ document.addEventListener("DOMContentLoaded", function() {
     if (setTheme.classList.contains("dark_mode")) {
       theme = "DARK";
       console.log("Dark mode");
+      toggleImg.src = "./images/icon-sun.svg";
     } else {
       theme = "LIGHT";
       console.log("Light mode");
+      toggleImg.src = "./images/icon-moon.svg";
     }
 
     // Save to localStorage
@@ -22,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Attach event listener to the toggle button
-  const toggleImg = document.getElementById("Img");
   toggleImg.addEventListener("click", toggle_icon);
 });
+
 
 // Function to handle filter click
 function handleFilterClick(event) {
@@ -187,7 +191,7 @@ function generateItem(description, completed) {
    // Hide the cross icon initially
    crossSpan.style.display = 'none';
  
-   // Add event listeners to show/hide the cross icon on hover
+   //event listeners to show/hide the cross icon on hover
    listItem.addEventListener('mouseenter', function () {
      crossSpan.style.display = 'inline-block';
    });
@@ -256,7 +260,6 @@ document.addEventListener('DOMContentLoaded', function () {
   addListItem();
   restoreItems();
 });
-
 
 // Variables to store references to the dragged item and the current drop target
 let draggedItem = null;
@@ -393,4 +396,3 @@ function updateItemsLeft() {
   let itemsLeftLabel = document.querySelector('.items-left');
   itemsLeftLabel.textContent = `${itemsLeft} ${itemsLeft === 1 ? 'item' : 'items'} left`;
 }
-

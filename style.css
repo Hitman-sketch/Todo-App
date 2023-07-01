@@ -10,6 +10,7 @@ html, body {
   font-size: 18px;
   font-family: 'Josefin Sans', sans-serif;
   box-sizing: border-box;
+  background: hsl(0, 0%, 98%);
 }
 
 
@@ -21,13 +22,13 @@ img {
 
 /*This code contains the header background image*/
 header {
-  background-size: fill;
+  background-size: contain;
   background-position: center;
   height: 300px;
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
   
 /*This container contains the positioning of the icon and the and some of the todo text*/
@@ -43,16 +44,13 @@ header {
   
 /*Todo font tweaks*/
 .brand-icon h1 {
+  position: relative;
+  left: 8px;
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
   line-height: 40px;
-/* identical to box height */
   letter-spacing: 15px;
-  color: hsl(0, 0%, 100%);
-  margin-right: 10px;
-  margin-top: 10px;
-    
 }
 
 /*moon icon positioning*/
@@ -64,6 +62,7 @@ header {
   display: flex;
   
 }
+
 
 /*This is the container that contains the input and it a long rectangualr box that fills up the input*/
 .quary {
@@ -174,21 +173,54 @@ header {
 
 /*This is the container that contains the input and it a long rectangualr box that fills up the input*/
 .todos-container {
-  background-color: hsl(0, 0%, 100%);
   width: 533px;
   max-height: 250px;
   position: relative;
   left: 419px;
   top: -50px;
-  border-radius: 5px ;
-  box-shadow: 0 5px 10px 5px hsl(236, 9%, 61%);
+  border-radius: 5px;
+  background: hsl(0, 0%, 100%);
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
   overflow-x: hidden;
+  align-items: center;
 }
+
+.filter-container {
+  position: sticky;
+  bottom: 0;
+  background-color: hsl(0, 0%, 100%);
+  z-index: 2;
+  border-top: 0.5px solid hsl(0, 0%, 83%);
+}
+
+.todos-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.todos-container::-webkit-scrollbar-thumb {
+  background-color: #c5c4c4;
+  border-radius: 4px;
+}
+
+.todos-container::-webkit-scrollbar-thumb:hover {
+  background-color: #a5a4a4;
+}
+
+.todos-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 4px;
+}
+
+
 
 .list {
   list-style-type: none;
   padding: 0;
   cursor: pointer;
+  position: relative;
+  z-index: 0;
 }
 
 .list li {
@@ -267,6 +299,7 @@ header {
 /* --------------------------- */
 .filter {
   cursor: pointer;
+  color: #aeb6bd;
 }
 
 .filter.active {
@@ -314,12 +347,45 @@ footer {
 
 /*-----------------DARK MODE----------------------*/
 body {
-  background-color: hsl(0, 0%, 100%);
+  background: hsl(0, 0%, 98%);
   color: hsl(235, 21%, 11%);
 }
 
+
+.dark_mode #mobile-filter{
+  border-radius: 5px;
+  background: #25273D;
+  box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.50);
+}
+
+.dark_mode .filter-container {
+  background-color: hsl(235, 24%, 19%);
+  border-top: 0.5px solid hsl(210, 2%, 25%);
+}
+
+.dark_mode .todos-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.dark_mode .todos-container::-webkit-scrollbar-thumb {
+  background-color: hsl(221, 9%, 36%);
+  border-radius: 4px;
+}
+
+.dark_mode .todos-container::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(240, 1%, 47%);
+}
+
+.dark_mode .todos-container::-webkit-scrollbar-track {
+  background-color: hsl(217, 18%, 28%);
+  border-radius: 4px;
+}
+
+
 .dark_mode .item-checked {
-  background-color: hsl(232, 26%, 16%)
+  background-color: hsl(232, 26%, 16%);
 }
 
 .dark_mode {
@@ -329,11 +395,19 @@ body {
 
 .dark_mode header {
   background-image: url(./images/bg-desktop-dark.jpg);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 1440px 300px;
+  flex-shrink: 0;
 }
 
 /*This rule applies the background image to the header when the dark mode class is not present on the body*/
 body:not(.dark_mode) header {
   background-image: url(./images/bg-desktop-light.jpg);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 1440px 300px;
+  flex-shrink: 0;
 }
 
 .brand-icon,h1 {
@@ -383,197 +457,11 @@ body:not(.dark_mode) header {
 /*-----------------DARK MODE----------------------*/
 
 
-/*-----mobile mode start-----------------*/
-@media (max-width: 375px) {
-  body:not(.dark_mode) header {
-    background-image: url(./images/bg-mobile-light.jpg) no-repeat;
-    background-size: 100% 100% no-repeat;
-    background-position: center 20px no-repeat;
-  }
-
-  .dark_mode header {
-    background-image: url(./images/bg-mobile-dark.jpg) no-repeat;
-    background-size: contain no-repeat;
-    background-position: center 20px no-repeat;
-  }
-
-  .brand-icon {
-    width: 100%;
-    height: 100%;
-    left: 10px;
-    top: 10px;
-    padding: 0;
-    margin: 0;
-  }
-
-  .brand-icon h1 {
-    position: relative;
-    height: 20px;
-    width: 109px;
-    font-size: 30px;
-    line-height: 30px;
-    letter-spacing: 10px;
-    margin-right: 50px;
-    top: 97px;
-    left: 20px;
-  }
-
-  .brand-icon img {
-    margin-left: 300px;
-    position: relative;
-    height: 20px;
-    width: 20px;
-    top: 80px;
-    left: 20px;
-  }
-
-  .quary {
-    position: relative;
-    width: 327px;
-    height: 48px;
-    left: 0;
-    top: 78px;
-    border-radius: 5px;
-    background-color: #fff;
-  }
-
-  .center-input {
-    width: 50%;
-    height: 100%;
-    padding-right: 0;
-    margin-left: -40px;
-    border: none;
-    background-color: #fff;
-  }
-
-  .icon-circle {
-    left: 17px;
-  }
-
-  .todos-container {
-    position: relative;
-    width: 327px;
-    max-height: 240px;
-    min-height: 50px;
-    left: 24px;
-    top: -30px;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px 2px hsl(233, 11%, 84%);
-  }
-
-  .items-left {
-    position: relative;
-    margin-right: 150px;
-    left: 20px;
-    top: 10px;
-    font-size: 12px;
-  }
-
-  .cont_All {
-    visibility: hidden;
-  }
-
-  .cont_active {
-    visibility: hidden;
-  }
-
-  .cont_completed {
-    visibility: hidden;
-  }
-  
-
-  .drag-drop p {
-    position: relative;
-    font-size: 14px;
-    text-align: center;
-    letter-spacing: -0.194444px;
-    color: #9495A5;
-    bottom: -35px;
-    left: 5px;
-  }
-
-  .attribution {
-    position: absolute;
-    font-size: 11px;
-    text-align: center;
-    left: 35px;
-    top: 30px;
-  }
-
-  .all-completed {
-    position: relative;
-    width: 327px;
-    height: 48px;
-    background-color: #ffff;
-    border-radius: 5px;
-    left: 24px;
-    right: 24px;
-    font-size: 14px;
-    top: -13px;
-    box-shadow: 0 2px 4px 2px hsl(233, 11%, 84%);
-    color: #88888a;
-
-  }
-
-  .clear {
-    position: relative;
-    font-size: 12px;
-    top: 24px;
-    right: 20px;
-    margin-left: 150px;
-  }
-
-  #all {
-    position: relative;
-    left: 85px;
-    top: 15px;
-  }
-
-  #active {
-    position: relative;
-    left: 100px;
-    top: 15px;
-  }
-
-  #completed {
-    position: relative;
-    left: 115px;
-    top: 15px;
-  }
-
-  #all, #active, #completed, .clear  {
-    cursor: pointer;
-  }
-
-  #all:hover, #active:hover, #completed:hover, .clear:hover {
-    color: #ebebeb;
-  }
-
-  .circle {
-    left: 17px;
-  }
-
-  .icon-check, .icon-circle {
-    border-radius: 100%;
-  }
-
-  .dragging {
-    opacity: 1;
-  }
-  
-  .dragover {
-    border-style: none;
-  }
-}
-/*-----------mobile mode end--------------*/
-
-
 
 /*----Desktop mode start----*/
 
-@media (min-width: 376px) and (max-width: 1440px) {
-  .all-completed {
+@media (max-width: 8060px) {
+  #mobile-filter {
     display: none;
   }
 }
@@ -581,7 +469,7 @@ body:not(.dark_mode) header {
 
 
 /* tablet mode start*/
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (max-width: 992px) {
 
     /*This container contains the positioning of the icon and the and some of the todo text*/
   .brand-icon {
@@ -592,17 +480,32 @@ body:not(.dark_mode) header {
     left: 10px;
     top: 45px;
   }
+
+  #mobile-filter {
+    display: none;
+  }
     
+
   /*Todo font tweaks*/
-  .brand-icon h1 {
+  h1 {
+    position: relative;
+    left: 8px;
     font-style: normal;
     font-weight: 700;
-    font-size: 35px;
+    font-size: 40px;
     line-height: 40px;
     letter-spacing: 15px;
-    color: hsl(0, 0%, 100%);
-    margin-right: 10px; 
   }
+
+    /*This code contains the header background image*/
+  header {
+    background-size: contain;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    text-align: center;
+  }
+  
 
   /*moon icon positioning*/
   .brand-icon img {
@@ -642,15 +545,16 @@ body:not(.dark_mode) header {
 
   /*This is the container that contains the input and it a long rectangualr box that fills up the input*/
   .todos-container {
-    background-color: hsl(0, 0%, 100%);
     width: 500px;
     max-height: 250px;
     position: relative;
     left: 220px;
     top: -50px;
-    border-radius: 5px ;
-    box-shadow: 0 5px 10px 5px hsl(236, 9%, 61%);
+    border-radius: 5px;
+    background: hsl(0, 0%, 100%);
+    box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
     overflow-x: hidden;
+    align-items: center;
   }
 
   .items-left {
@@ -723,7 +627,214 @@ body:not(.dark_mode) header {
     position: absolute;
     left: 340px;
   }
+  
+  footer {
+    position: relative;
+    bottom: auto;
+    width: 100%;
+    top: 25px;
+  }
 }
 
 
+/*-----mobile mode start-----------------*/
+@media (max-width: 375px) {
+  body:not(.dark_mode) header {
+    background-image: url(./images/bg-mobile-light.jpg);
+    background-size: 375px 200px;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+  }
+
+  .dark_mode header {
+    background-image: url(./images/bg-mobile-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: 375px 200px;
+    flex-shrink: 0;
+  }
+
+  #mobile-filter {
+    display: inline-block;
+  }
+
+  .brand-icon {
+    width: 90%;
+    height: 10%;
+    left: 10px;
+    top: 10px;
+    padding: 0;
+    margin: 0;
+  }
+
+
+  ::placeholder{
+    font-size: 13px;
+  }
+
+  .brand-icon h1 {
+    position: relative;
+    height: 20px;
+    width: 109px;
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: 10px;
+    margin-right: 50px;
+    top: 35px;
+    left: 17px;
+  }
+
+  .brand-icon img {
+    margin-left: 300px;
+    position: relative;
+    height: 20px;
+    font-size: 25px;
+    width: 20px;
+    top: 18px;
+    left: 15px;
+  }
+
+  .quary {
+    position: relative;
+    width: 330px;
+    height: 48px;
+    left: 0;
+    top: -15px;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+
+  .center-input {
+    width: 50%;
+    height: 100%;
+    padding-right: 0;
+    margin-left: -40px;
+    border: none;
+    background-color: #fff;
+  }
+
+  .icon-circle {
+    left: 23px;
+   
+  }
+
+
+  .todos-container {
+    position: relative;
+    width: 330px;
+    max-height: 240px;
+    min-height: 40px;
+    left: 23px;
+    top: -125px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 2px 4px 2px hsl(233, 11%, 84%);
+    align-items: center;
+  }
+
+  #mobile-filter {
+    position: relative;
+    width: 327px;
+    height: 48px;
+    flex-shrink: 0;
+    left: 22px;
+    top: -100px;
+    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: 20px 15px 20px 1px rgba(194, 195, 214, 0.50);
+ 
+  }
+
+  .clear {
+    position: relative;
+    font-size: 12px;
+    top: 24px;
+    right: 20px;
+    margin-left: 150px;
+  }
+
+  .items-left {
+    position: relative;
+    margin-right: 150px;
+    left: 20px;
+    top: 10px;
+    font-size: 12px;
+  }
+
+  .cont_All {
+    visibility: hidden;
+  }
+
+  .cont_active {
+    visibility: hidden;
+  }
+
+  .cont_completed {
+    visibility: hidden;
+  }
+  
+
+  .drag-drop p {
+    position: relative;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: -0.194444px;
+    color: #9495A5;
+    bottom: -35px;
+    left: 5px;
+    top: -40px;
+  }
+
+  .attribution {
+    position: absolute;
+    font-size: 11px;
+    text-align: center;
+    left: 40px;
+    top: -30px;
+  }
+
+  #all {
+    position: relative;
+    left: 95px;
+    top: 15px;
+  }
+
+  #active {
+    position: relative;
+    left: 110px;
+    top: 15px;
+  }
+
+  #completed {
+    position: relative;
+    left: 120px;
+    top: 15px;
+  }
+
+  #all,#active,#completed {
+    font-size: 12px;
+  }
+
+  #all, #active, #completed, .clear  {
+    cursor: pointer;
+  }
+
+ 
+
+  .circle {
+    left: 17px;
+  }
+
+  .icon-check, .icon-circle {
+    border-radius: 100%;
+  }
+
+  .dragging {
+    opacity: 1;
+  }
+  
+  .dragover {
+    border-style: none;
+  }
+}
+/*-----------mobile mode end--------------*/
 
