@@ -9,7 +9,6 @@ html, body {
   width: 100%;
   font-size: 18px;
   font-family: 'Josefin Sans', sans-serif;
-  background: hsl(0, 0%, 98%);
 }
 
 img {
@@ -331,12 +330,12 @@ footer {
   top: 25px;
 }
 
+
 /*-----------------DARK MODE----------------------*/
 body {
   background: hsl(0, 0%, 98%);
   color: hsl(235, 21%, 11%);
 }
-
 
 .dark_mode #mobile-filter{
   border-radius: 5px;
@@ -439,6 +438,7 @@ body:not(.dark_mode) header {
 .dark_mode .center-input:focus {
   color: rgb(98, 102, 105);
 }
+
 
 /*----Desktop mode start----*/
 @media (max-width: 8060px) {
@@ -581,14 +581,13 @@ body:not(.dark_mode) header {
     background-image: url(./images/bg-mobile-light.jpg);
     background-size: 375px 200px;
     background-repeat: no-repeat;
-    flex-shrink: 0;
   }
 
   .dark_mode header {
     background-image: url(./images/bg-mobile-dark.jpg);
     background-repeat: no-repeat;
     background-size: 375px 200px;
-    flex-shrink: 0;
+    
   }
 
   #mobile-filter {
@@ -626,6 +625,9 @@ body:not(.dark_mode) header {
   }
 
   .quary {
+    display: flex;
+    justify-content: center;   
+    align-items: center; 
     width: 330px;
     height: 48px;
     border-radius: 5px;
@@ -660,9 +662,11 @@ body:not(.dark_mode) header {
   }
 
   #mobile-filter {
-    margin-top: 1rem;
-    margin-left: 14px;
-    margin-inline: 20px;
+    margin-top: 2rem;
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 327px;
     height: 48px;
     flex-shrink: 0;
@@ -709,29 +713,24 @@ body:not(.dark_mode) header {
     color: #9495A5;
   }
 
-  .attribution {
-    display: flex;
-    justify-content: center;
-    font-size: 11px;
-    text-align: center;
-  }
-
   #all {
-    position: relative;
-    left: 95px;
-    top: 15px;
+    display: flex;
+    align-items: start;
+    margin-inline: 20px;
+    
   }
 
   #active {
-    position: relative;
-    left: 110px;
-    top: 15px;
+    display: flex;
+    align-items: center;
+    margin-inline: 20px;
+    
   }
 
   #completed {
-    position: relative;
-    left: 120px;
-    top: 15px;
+    display: flex;
+    align-items: end;
+    
   }
 
   #all,#active,#completed {
