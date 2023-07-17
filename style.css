@@ -574,20 +574,18 @@ body:not(.dark_mode) header {
 
 }
 
-
 /*-----mobile mode start-----------------*/
-@media (max-width: 375px) {
+@media screen and (max-width: 480px) {
   body:not(.dark_mode) header {
     background-image: url(./images/bg-mobile-light.jpg);
-    background-size: 375px 200px;
+    background-size: contain;
     background-repeat: no-repeat;
   }
 
   .dark_mode header {
     background-image: url(./images/bg-mobile-dark.jpg);
     background-repeat: no-repeat;
-    background-size: 375px 200px;
-    
+    background-size: contain;
   }
 
   #mobile-filter {

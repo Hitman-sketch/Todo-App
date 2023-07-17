@@ -1,0 +1,187 @@
+[33mcommit b24bb40131cb8635be85fe365cd8c5d8bf164174[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat Jul 1 16:26:17 2023 +0000
+
+    mobile and tablet view style.
+
+[33mcommit d48960403c5f5305f768d59746f7c6c86d7fe683[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Fri Jun 23 09:00:42 2023 +0000
+
+    styled the filter alignment.
+
+[33mcommit 22a38c1ca209117892efcd394e00dc25d8b67bfa[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Thu Jun 22 23:34:30 2023 +0000
+
+    finished finalizing the filters and some aligning and a hover to show the cross icon.
+
+[33mcommit f711bab6fd927f81e2e9938f3ffd8eaf53bdaa9c[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Thu Jun 22 09:52:30 2023 +0000
+
+    worked on local storage for the list items and Theme/ and also created a tablet view.
+
+[33mcommit b51d133463c50a2862a8823087a2d26b120fe5ef[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat Jun 17 21:49:44 2023 +0000
+
+     modified the cross icon functionality to remove both list item toggles and circle icon toggles.
+
+[33mcommit 9a41336755f7f855ffeac4571c072929b7fa6840[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat Jun 17 19:45:49 2023 +0000
+
+    added a toggle functionality to the list items and and modified the items left to takeway 1 when the item or cirle is clicked.
+
+[33mcommit 6afeb70dbc12a530addb9cfe6ef66d222b2f1747[m
+Merge: 3109f37 2c991a3
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat Jun 17 19:45:11 2023 +0000
+
+    Merge branch 'main' of https://github.com/Hitman-sketch/Todo-App
+
+[33mcommit 3109f377fc27388c9b6bea9d82681a198084ff21[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat Jun 17 19:37:34 2023 +0000
+
+    added a toggle functionality to the list items and and modified the items left to takeway 1 when the item or cirle is clicked.
+
+[33mcommit 2c991a317b21b65a7f0591d13fc75d23a56087a0[m
+Author: Michael Nii Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Tue Jun 13 03:38:59 2023 +0000
+
+    Update README.md
+
+[33mcommit f1ded183e6690dd32ebdd355f4b731a35de5fc2a[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sun Jun 11 00:57:16 2023 +0000
+
+    Added an event listener for Enter key press and click on the circle icon...
+
+[33mcommit cbdab8985e308563e06348a7432055bc201c2cc1[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Thu Jun 8 23:56:19 2023 +0000
+
+    Did a personal review and modified the html slightly.
+
+[33mcommit 1f70b5548aeb9b96af9840a51e38c9005dd3f115[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Thu Jun 8 23:51:50 2023 +0000
+
+    Did a personal review of the code and modified some few things.
+
+[33mcommit fdc084e9e5901d06693147091aaa23fd07dd6ef0[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat Jun 3 22:09:16 2023 +0000
+
+    tweaked the readme and style.css,changing the opacityof the drag and .
+
+[33mcommit f32b2993e954b26d8dfed46205e75015631b9d08[m
+Merge: c93a1f2 523b6be
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat Jun 3 15:32:14 2023 +0000
+
+    Merge branch 'main' of https://github.com/Hitman-sketch/Todo-App
+
+[33mcommit c93a1f22a4d770cf10a3e1316be216037c2590b3[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat Jun 3 15:30:52 2023 +0000
+
+    ...
+
+[33mcommit 523b6be95ffe85d5be807a6247023cbb122c702e[m
+Author: Michael Nii Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat Jun 3 15:14:17 2023 +0000
+
+    Create README.md
+
+[33mcommit 62e43d6be37422058be922456047800970a69b1d[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat Jun 3 15:08:50 2023 +0000
+
+    introduced drag and drop functionalty into the mobile view I dont get why it did not take the dk-view functionality
+
+[33mcommit 292b450992a5b4a9e84fb6f1f0f6630cdafd64cf[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Fri Jun 2 00:01:22 2023 +0000
+
+    Improved the mobile view, done with the desktop view, am left with assigning the right colors for the dk-view.
+
+[33mcommit 4ed8b764fa4ffc231be1fc686990f21ae4431882[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Wed May 31 20:23:37 2023 +0000
+
+    working on the modile view and would have to modify some loose ends in the labels section.
+
+[33mcommit 1bfc6f1f7ac0aacbbaf2b6338bc299d5534092ea[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Mon May 29 23:39:41 2023 +0000
+
+    added the cross icon to remove items from list and implemented the drag and drop functionality.
+
+[33mcommit 77fc7df240da2bcbd62559c87e3c4ddd95d03515[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Mon May 29 17:48:17 2023 +0000
+
+    added the check icon when the circle icon is clicked and the cross icon as well.
+
+[33mcommit f4117d955774c9912db98eab6cedd73ca80f80bc[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Wed May 24 00:33:39 2023 +0000
+
+    adding items to the list.
+
+[33mcommit 47f1adc8ca6a05373fd75e1844104c2b6c6a6d4a[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Mon May 22 23:26:55 2023 +0000
+
+    completed dark mode and fixed the labels...
+
+[33mcommit 87bb89ff9d17c460a416570b9fd4e81da746efb1[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat May 20 18:06:25 2023 +0000
+
+    working on the dark mode but still need to correct some code.
+
+[33mcommit c7bd68168aee944c49f47a1e65b2920e1e968a8a[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Thu May 18 19:01:18 2023 +0000
+
+    edited the style.css
+
+[33mcommit 776304cf322be147a80bd65825bdec4bedc42d4a[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Thu May 18 18:55:28 2023 +0000
+
+    completed the light mode
+
+[33mcommit b87a1c19888610ceec3c8c6d978d52288f7b266a[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Wed May 17 15:33:56 2023 +0000
+
+    commit of the header,title,the moon logo design and the input bar.
+
+[33mcommit ecd029468f6c16dfb0519c24abf36a954a99ce2a[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat May 13 13:09:34 2023 +0000
+
+    first commit
+
+[33mcommit 1dcffa9aa3b99b365e2c1623d0ee42e2bdfa076d[m
+Author: Michael Attoh <52075079+Hitman-sketch@users.noreply.github.com>
+Date:   Sat May 13 13:05:28 2023 +0000
+
+    first commit
+
+[33mcommit 3d3b3fc9ccdb6eb93b0944e5be0a85a047ff3bb6[m
+Author: michael attoh <michaelattoh95@gmail.com>
+Date:   Sat Apr 8 15:19:18 2023 -0700
+
+    second commit of project resourses
+
+[33mcommit 52a0bdb7c985b730394fd9b218e6ddbca475d4c1[m
+Author: michael attoh <michaelattoh95@gmail.com>
+Date:   Sat Apr 8 14:54:50 2023 -0700
+
+    first commit
